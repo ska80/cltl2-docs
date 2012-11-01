@@ -1,0 +1,3672 @@
+\batchmode
+\documentstyle[twoside,permutemonospace]{CLTL}
+\makeatletter
+%
+
+\sloppy
+
+
+\ifchiron
+  \let\relax
+\else
+  
+\fi
+
+
+
+\let\newer=\new
+
+\pagestyle{headings}
+
+\makeindex
+
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\def\pagestatus{\error}
+
+\def\tagline{\ifcase\month\or
+    January\or February\or March\or April\or May\or June\or
+    July\or August\or September\or October\or November\or December\fi~\number\day,~\number\year
+    ---\pagestatus---Common Lisp: The Language 2/E---Digital Press---\copyright~\number\year
+    ~Guy L. Steele Jr. All rights reserved.}
+
+\def\tagline{}
+
+\def\pagestatus{ROUGH PAGES}
+
+\def\numberline#1{\setbox0=\hbox{#1 }\ifdim \wd0 < \@tempdima
+    \hbox to \@tempdima{\box0\hfil}\else \box0 \fi}
+
+\def\pagestatus{FINAL PROOF}
+
+\def\GrossOptVars{\Mstar{{\it var} {\Mor} \cd{(}{\it var} \Mopt{{\it initform} \Mopt{{\it svar}}}\cd{)}}}
+
+\def\GrossKeyOptVars{\Mstar{{\it var} {\Mor} \cd{(}\Mgroup{{\it var} {\Mor} \cd{(}{\it keyword} {\it var}\cd{)}} \Mopt{{\it initform} \Mopt{{\it svar}}}\cd{)}}}
+
+\def\GrossAuxVars{\Mstar{{\it var} {\Mor} \cd{(}{\it var} \Mopt{{\it initform}}\cd{)}}}
+
+\def\pagestatus{ULTIMATE}
+
+\def\arcsinh{\mathop{\rm arcsinh}\nolimits}
+
+\def\arccosh{\mathop{\rm arccosh}\nolimits}
+
+\def\arctanh{\mathop{\rm arctanh}\nolimits}
+
+\def\cis{\mathop{\rm cis}\nolimits}
+
+\def\phase{\mathop{\rm phase}\nolimits}
+
+\def\numplot#1{\vskip -2pt \vskip 28pc \PostScriptFile{#1-plot.ps}\vskip 3pt}
+
+\def\arraystretch{1.1}
+
+\def\foo{-6pt}
+
+\def\@listi{\leftmargin\leftmargini \labelsep\leftmargin
+   \parsep 3pt\relax
+   \topsep 2pt plus 5pt\relax
+   \itemsep\topsep}
+
+\def\CLOS{Common Lisp Object System}
+
+\def\OS{Object System}
+
+\def\bit{\it}
+
+\def\sub{_}
+
+\def\Qhyphen{\copy\Qhyphbox}
+
+\def\foohyphen{\copy\hyphbox}
+
+\def\SU#1{\({}_{#1}\)}
+
+\def\@listi{\leftmargin\leftmargini \labelsep\leftmargin
+   \parsep 3pt\relax
+   \topsep 4pt plus 9pt\relax
+   \itemsep\topsep}
+
+\def\fooprime#1{#1'}
+
+\def\foo#1#2#3{\vbox to 0pt{\vskip #2\vskip 3pt\hbox to 0pt{\hskip #1\hskip -3pt\vbox to 0pt{\vss
+   \hbox to 0pt{\hss \tt #3\hss}\vss}\hss}\vss}}
+
+\def\@listi{\leftmargin\leftmargini \labelsep\leftmargin
+   \parsep 3pt\relax
+   \topsep 4pt plus 10pt\relax
+   \itemsep\topsep}
+\newdimen\foodimen
+\foodimen=\textheight
+\newbox\Qhyphbox
+\newbox\hyphbox
+
+\makeatother
+\newenvironment{tex2html_wrap}{}{}
+\begin{document}
+\pagestyle{empty}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \EV
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \EX
+}
+
+{\newpage
+\clearpage
+\samepage \EQ
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 164
+[t]
+\caption{Sample Function Description}
+\label{Sample-Function-Description}
+\begingroup\normalsize
+\begin{defun}*[Function]
+sample-function arg1 arg2 &optional arg3 arg4
+
+The function \cd{sample-function} adds together {\it arg1} and {\it arg2}, and
+then multiplies the result by {\it arg3}.  If {\it arg3} is not provided or
+is {\nil}, the multiplication isn't done.  \cd{sample-function} then returns
+a list whose first element is this result and whose second element is
+{\it arg4} (which defaults to the symbol \cd{foo}).
+For example:
+\begin{lisp}
+(sample-function 3 4) \EV\ (7 foo) \\ 
+(sample-function 1 2 2 'bar) \EV\ (6 bar)
+\end{lisp}
+In general,
+\cd{(sample-function {\it x} {\it y})} \EQ\ \cd{(list (+ {\it x} {\it y}) 'foo)}.
+\end{defun}
+\endgroup
+\vskip\ruletonoteskip
+\hrule
+\vskip\ruletonoteskip\null
+\caption{Sample Variable Description}
+\label{Sample-Variable-Description}
+\begingroup\normalsize
+\begin{defun}*[Variable]
+*sample-variable*
+
+The variable \cd{*sample-variable*} specifies how many times
+the special form \cd{sample-special-form} should iterate.
+The value should always be a non-negative integer or {\nil}
+(which means iterate indefinitely many times).  The initial value is \cd{0}
+(meaning no iterations).
+\end{defun}
+\endgroup
+\vskip\ruletonoteskip
+\hrule
+\vskip\ruletonoteskip\null
+\caption{Sample Constant Description}
+\label{Sample-Constant-Description}
+\begingroup\normalsize
+\begin{defun}*[Constant]
+sample-constant
+
+The named constant \cd{sample-constant} has as its value
+the height of the terminal screen in furlongs times
+the base-2 logarithm of the implementation's total disk capacity in bytes,
+as a floating-point number.
+\end{defun}
+\endgroup
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 198
+[t]
+\caption{Sample Special Form Description}
+\label{Sample-Special-Form-Description}
+\begingroup\normalsize
+\begin{defspec}*
+sample-special-form [name] ({var}*) {\,form}+
+
+This evaluates each form in sequence as an implicit \cd{progn}, and does this
+as many times as specified by
+the global variable \cd{*sample-variable*}.  Each variable {\it var} is bound
+and initialized to \cd{43} before the first iteration, and unbound after
+the last iteration.
+The name {\it name}, if supplied, may be used in a \cd{return-from} form
+to exit from the loop prematurely.  If the loop ends normally,
+\cd{sample-special-form} returns {\nil}.
+For example:
+\begin{lisp}
+(setq *sample-variable* 3) \\ 
+(sample-special-form {\empty} {\it form1} {\it form2})
+\end{lisp}
+This evaluates {\it form1}, {\it form2}, {\it form1}, {\it form2}, {\it form1}, {\it form2}
+in that order.
+\end{defspec}
+\endgroup
+\vskip\ruletonoteskip
+\hrule
+\vskip\ruletonoteskip\null
+\caption{Sample Macro Description}
+\label{Sample-Macro-Description}
+\begingroup\normalsize
+\begin{defmac}*
+sample-macro var <declaration* | doc-string> {tag | statement}*
+
+This evaluates the statements as a \cd{prog} body,
+with the variable {\it var} bound to \cd{43}.
+\begin{lisp}
+(sample-macro x (return (+ x x))) \EV\ 86 \\ 
+(sample-macro {\it var} . {\it body}) \EX\ (prog (({\it var} 43)) . {\it body})
+\end{lisp}
+\end{defmac}
+\endgroup
+\end{table}
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${}^*$
+}
+
+{\newpage
+\clearpage
+\samepage ${}^+$
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \Xquote
+}
+
+{\newpage
+\clearpage
+\samepage $105_{8}$
+}
+
+{\newpage
+\clearpage
+\samepage $105_{16}$
+}
+
+{\newpage
+\clearpage
+\samepage $1011_{2}$
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage $-2^{\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage $2^{\hbox{\scriptsize\it n}}-1$
+}
+
+{\newpage
+\clearpage
+\samepage \(e^{\pi i}\)
+}
+
+{\newpage
+\clearpage
+\samepage \(-192\)
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \((-5/2)^{15}\)
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it s} \cdot {\it f} \cdot {\it b}^{\hbox{\scriptsize\it e}-\hbox{\scriptsize\it p}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it b}^{\,\hbox{\scriptsize\it p}-1}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it p} \log_2 {\it b}$
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 670
+[t]
+\caption{Recommended Minimum Floating-Point Precision and Exponent Size}
+\label{Floating-Format-Requirements-Table}
+\begin{tabular}{@{}lll@{}}
+{Format\quad\quad}&{Minimum Precision\quad\quad}&{Minimum Exponent Size} \\  \hlinesp
+Short&13 bits&5 bits \\ 
+Single&24 bits&8 bits \\ 
+Double&50 bits&8 bits \\ 
+Long&50 bits&8 bits
+\end{tabular}
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \(\pi\)
+}
+
+{\newpage
+\clearpage
+\samepage \(\log_{10} 2\)
+}
+
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \Xcircumflex
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage % latex2html id marker 40236
+\(\alpha\)
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage ${\it a}_1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it a}_{\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it a}_j$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it a}_{\hbox{\scriptsize\it j}}$
+}
+
+\stepcounter{chapter}
+{\newpage
+\clearpage
+\samepage \({}_1\)
+}
+
+{\newpage
+\clearpage
+\samepage \({}_2\)
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 2096
+[t]
+\caption{Standard Type Specifier Symbols}
+\label{TYPE-SYMBOLS-TABLE}
+\divide\tabcolsep by 2\relax
+\begin{flushleft}
+\cf
+\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}l@{\extracolsep{\fill}}l@{\extracolsep{\fill}}l@{}}
+array&fixnum&package&simple-string \\ 
+atom&float&pathname&simple-vector \\ 
+bignum&function&random-state&single-float \\ 
+bit&hash-table&ratio&standard-char \\ 
+bit-vector&integer&rational&stream \\ 
+character&keyword&readtable&string \\ 
+{\rm [}common{\rm ]}&list&sequence&{\rm [}string-char{\rm ]} \\ 
+compiled-function&long-float&short-float&symbol \\ 
+complex&nil&signed-byte&t \\ 
+cons&null&simple-array&unsigned-byte \\ 
+double-float&number&simple-bit-vector&vector
+\end{tabular*}
+\end{flushleft}
+
+\begin{newer}
+X3J13 voted in March 1989 \issue{COMMON-TYPE} to remove the type \cd{common}.
+
+X3J13 voted in March 1989 \issue{CHARACTER-PROPOSAL} to remove the type \cd{string-char}.
+
+X3J13 voted in March 1989 \issue{CHARACTER-PROPOSAL}
+to add \cd{base-character} and \cd{extended-character}.
+
+X3J13 voted in March 1989 \issue{REAL-NUMBER-TYPE} to add the type \cd{real}.
+\end{newer}
+\end{table}
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage $-2^{\hbox{\scriptsize\it s}-1}$
+}
+
+{\newpage
+\clearpage
+\samepage $2^{\hbox{\scriptsize\it s}-1}-1$
+}
+
+{\newpage
+\clearpage
+\samepage $2^{\hbox{\scriptsize\it s}}$
+}
+
+{\newpage
+\clearpage
+\samepage $2^{\hbox{\scriptsize\it s}}-1$
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 3064
+[t]
+\caption{Names of All Common Lisp Special Forms}
+\label{SPECIAL-FORM-TABLE}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lll@{}}
+\cd{block}&\cd{if}&\cd{progv} \\ 
+\cd{catch}&\cd{labels}&\cd{quote} \\ 
+{\rm \lbrack}\cd{compiler-let}{\rm \rbrack}&\cd{let}&\cd{return-from} \\ 
+\cd{declare}&\cd{let*}&\cd{setq} \\ 
+\cd{eval-when}&\cd{macrolet}&\cd{tagbody} \\ 
+\cd{flet}&\cd{multiple-value-call}&\cd{the} \\ 
+\cd{function}&\cd{multiple-value-prog1}&\cd{throw} \\ 
+\cd{go}&\cd{progn}&\cd{unwind-protect}
+\end{tabular*}
+\vskip 4pt
+\begin{newer}
+X3J13 voted in June 1989 \issue{COMPILER-LET-CONFUSION} to remove
+\cd{compiler-let} from the language.
+\end{newer}
+
+\begin{newer}
+X3J13 voted in June 1988 \issue{CLOS} to add the special forms \cd{generic-flet},
+\cd{generic-labels}, \cd{symbol-macrolet}, and \cd{with-added-methods}.
+\end{newer}
+
+\begin{newer}
+X3J13 voted in March 1989 \issue{LOCALLY-TOP-LEVEL} to make
+\cd{locally} a special form rather than a macro.
+\end{newer}
+
+\begin{newer}
+X3J13 voted in March 1989 \issue{LOAD-TIME-EVAL} to add the special form
+\cd{load-time-eval}.
+\end{newer}
+\end{table}
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}c@{}cccl@{}}
+     LT&CT&EX&CTTM&Action \\  \hlinesp
+       yes & yes &--   & --  &    process body in compile-time-too mode \\ 
+       yes & no  &yes  & yes &    process body in compile-time-too mode \\ 
+       yes & no  &--   & no  &    process body in not-compile-time mode \\ 
+       yes & no  &no   & --  &    process body in not-compile-time mode \\ 
+       no  & yes &--   & --  &    evaluate body \\ 
+       no  & no  &yes  & yes &    evaluate body \\ 
+       no  & no  &--   & no  &    do nothing \\ 
+       no  & no  &no   & --  &    do nothing \\ 
+       \hline
+     \end{tabular*}
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage $\;\equiv\;$
+}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \(\ldots\)
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
+{\rm Access Function}&{\rm Update Function}&{\rm Update Using \cd{setf}} \\ 
+\hlinesp
+\cd{x}&\cd{(setq x datum)}&\cd{(setf x datum)} \\ 
+\cd{(car x)}&\cd{(rplaca x datum)}&\cd{(setf (car x) datum)} \\ 
+\cd{(symbol-value x)}&\cd{(set x datum)}&\cd{(setf (symbol-value x) datum)} \\ 
+\hline
+\end{tabular*}
+}
+
+{\newpage
+\clearpage
+\samepage ${}_1$
+}
+
+{\newpage
+\clearpage
+\samepage ${}_2$
+}
+
+{\newpage
+\clearpage
+\samepage ${}_k$
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it k\/}<{\it j}$
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 7685
+[t]
+\begin{new}
+\leavevmode
+\vtop{
+\caption{Structure Traversal Operations Subject to Side Effect Restrictions}
+\label{TRAVERSAL-OPERATIONS-TABLE}
+}
+
+\begingroup\cf \tabcolsep0pt\relax
+\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
+adjoin & maphash & reduce \\ 
+assoc & mapl & remove \\ 
+assoc-if & maplist & remove-duplicates \\ 
+assoc-if-not & member & remove-if \\ 
+count & member-if & remove-if-not \\ 
+count-if & member-if-not & search \\ 
+count-if-not & merge & set-difference \\ 
+delete & mismatch & set-exclusive-or \\ 
+delete-duplicates & nintersection & some \\ 
+delete-if & notany & sort \\ 
+delete-if-not & notevery & stable-sort \\ 
+do-all-symbols & nset-difference & sublis \\ 
+do-external-symbols & nset-exclusive-or & subsetp \\ 
+do-symbols & nsublis & subst \\ 
+dolist & nsubst & subst-if \\ 
+eval & nsubst-if & subst-if-not \\ 
+every & nsubst-if-not & substitute \\ 
+find & nsubstitute & substitute-if \\ 
+find-if & nsubstitute-if & substitute-if-not \\ 
+find-if-not & nsubstitute-if-not & tree-equal \\ 
+intersection & nunion & union \\ 
+{\rm certain} loop {\rm clauses} & position & with-hash-table-iterator \\ 
+map & position-if & with-input-from-string \\ 
+mapc & position-if-not & with-output-to-string \\ 
+mapcan & rassoc & with-package-iterator \\ 
+mapcar & rassoc-if \\ 
+mapcon & rassoc-if-not
+\end{tabular*}
+\endgroup
+\end{new}
+\end{table}
+}
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage ${\it w}_1, \ldots, {\it w}_{\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it w}_{\hbox{\scriptsize\it j}}$
+}
+
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 11146
+[t]
+\caption{An Initialization File}
+\label{INIT-FILE-TABLE}
+\begin{lisp}
+;;;; Lisp init file for I. Newton. \\ 
+ \\ 
+;;; Set up the USER package the way I like it. \\ 
+ \\ 
+(require 'calculus)~~~~~~~~~~~~~;I use CALCULUS a lot; load it. \\ 
+(use-package 'calculus)~~~~~~~~~;Get easy access to its \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~; exported symbols. \\ 
+ \\ 
+(require 'newtonian-mechanics)~~;Same thing for NEWTONIAN-MECHANICS \\ 
+(use-package 'newtonian-mechanics) \\ 
+ \\ 
+;;; I just want a few things from RELATIVITY, \\ 
+;;; and other things conflict. \\ 
+;;; Import only what I need into the USER package. \\ 
+ \\ 
+(require 'relativity) \\ 
+(import '(relativity:speed-of-light \\ 
+~~~~~~~~~~relativity:ignore-small-errors)) \\ 
+ \\ 
+;;; These are worth loading, but I will use qualified names, \\ 
+;;; such as PHLOGISTON:MAKE-FIRE-BOTTLE, to get at any symbols \\ 
+;;; I might need from these packages. \\ 
+ \\ 
+(require 'phlogiston) \\ 
+(require 'alchemy) \\ 
+ \\ 
+;;; End of Lisp init file for I. Newton.
+\end{lisp}
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 11177
+\caption{File \protect\cd{alchemy}}
+\label{ALCHEMY-FILE-TABLE}
+\begin{lisp}
+;;;; Alchemy functions, written and maintained by Merlin, Inc. \\ 
+ \\ [4pt]
+(provide 'alchemy)~~~~~~~~~~~~~~~~~~;The module is named ALCHEMY. \\ 
+(in-package 'alchemy)~~~~~~~~~~~~~~~;So is the package. \\ 
+ \\ [4pt]
+;;; There is nothing to shadow. \\ 
+ \\ [4pt]
+;;; Here is the external interface. \\ 
+ \\ [4pt]
+(export '(lead-to-gold gold-to-lead  \\ 
+~~~~~~~~~~antimony-to-zinc elixir-of-life)) \\ 
+ \\ [4pt]
+;;; This package/module needs a function from \\ 
+;;; the PHLOGISTON package/module. \\ 
+ \\ [4pt]
+(require 'phlogiston) \\ 
+ \\ [4pt]
+;;; We don't frequently need most of the external symbols from \\ 
+;;; PHLOGISTON, so it's not worth doing a USE-PACKAGE on it. \\ 
+;;; We'll just use qualified names as needed.~~But we use \\ 
+;;; one function, MAKE-FIRE-BOTTLE, a lot, so import it. \\ 
+;;; It's external in PHLOGISTON and so can be referred to \\ 
+;;; here using ":" qualified-name syntax. \\ 
+ \\ [4pt]
+(import '(phlogiston:make-fire-bottle)) \\ 
+ \\ [4pt]
+;;; Now for the real contents of this file. \\ 
+ \\ [4pt]
+(defun lead-to-gold (x) \\ 
+~~"Takes a quantity of lead and returns gold." \\ 
+~~(when (> (phlogiston:heat-flow 5 x x)~~;Using a qualified symbol \\ 
+~~~~~~~~~~~3) \\ 
+~~~~(make-fire-bottle x))~~~~~~~~~~~~~~~~;Using an imported symbol \\ 
+~~(gild x)) \\ 
+ \\ [4pt]
+;;; And so on ...
+\end{lisp}
+\vfill
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 11183
+\caption{File \protect\cd{phlogiston}}
+\label{PHLOGISTON-FILE-TABLE}
+\begin{lisp}
+;;;; Phlogiston functions, by Thermofluidics, Ltd. \\ 
+ \\ [4pt]
+(provide 'phlogiston)~~~~~~~~~~~~~;The module is named PHLOGISTON. \\ 
+(in-package 'phlogiston)~~~~~~~~~~;So is the package. \\ 
+ \\ [4pt]
+;;; There is nothing to shadow. \\ 
+ \\ [4pt]
+;;; Here is the external interface. \\ 
+ \\ [4pt]
+(export '(heat-flow cold-flow mix-fluids separate-fluids \\ 
+~~~~~~~~~~burn make-fire-bottle)) \\ 
+ \\ [4pt]
+;;; This file uses functions from the ALCHEMY package/module. \\ 
+ \\ [4pt]
+(require 'alchemy) \\ 
+ \\ [4pt]
+;;; We use alchemy functions a lot, so use the package. \\ 
+;;; This will allow symbols exported from the ALCHEMY package \\ 
+;;; to be referred to here without the need for qualified names. \\ 
+ \\ [4pt]
+(use-package 'alchemy) \\ 
+ \\ [4pt]
+;;; No calls to IMPORT are needed here. \\ 
+ \\ [4pt]
+;;; The real contents of this package/module. \\ 
+\\ [4pt]
+(defvar *feeling-weak* nil) \\ 
+ \\ [4pt]
+(defun heat-flow (amount x y) \\ 
+~~"Make some amount of heat flow from x to y." \\ 
+~~(when *feeling-weak* \\ 
+~~~~(quaff (elixir-of-life)))~~~~~;No qualifier is needed. \\ 
+~~(push-heat amount x y)) \\ 
+ \\ [4pt]
+;;; And so on ...
+\end{lisp}
+\vfill
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 11215
+[t]
+\caption{An Initialization File When \protect\cd{defpackage} Is Used}
+\label{DEFPACKAGE-INIT-FILE-TABLE}
+\begin{lisp}
+;;;; Lisp init file for I. Newton. \\ 
+ \\ 
+;;; Set up the USER package the way I like it. \\ 
+ \\ 
+(load "calculus")~~~~~~~~~~~~~~~;I use CALCULUS a lot; load it. \\ 
+(use-package 'calculus)~~~~~~~~~;Get easy access to its \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~; exported symbols. \\ 
+ \\ 
+(load "newtonian-mechanics")~~~~;Ditto for NEWTONIAN-MECHANICS \\ 
+(use-package 'newtonian-mechanics) \\ 
+ \\ 
+;;; I just want a few things from RELATIVITY, \\ 
+;;; and other things conflict. \\ 
+;;; Import only what I need into the USER package. \\ 
+ \\ 
+(load "relativity") \\ 
+(import '(relativity:speed-of-light \\ 
+~~~~~~~~~~relativity:ignore-small-errors)) \\ 
+ \\ 
+;;; These are worth loading, but I will use qualified names, \\ 
+;;; such as PHLOGISTON:MAKE-FIRE-BOTTLE, to get at any symbols \\ 
+;;; I might need from these packages. \\ 
+ \\ 
+(load "phlogiston") \\ 
+(load "alchemy") \\ 
+ \\ 
+;;; End of Lisp init file for I. Newton.
+\end{lisp}
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 11248
+[t]
+\caption{File \protect\cd{alchemy-package} Using \protect\cd{defpackage}}
+\label{DEFPACKAGE-ALCHEMY-PACKAGE-TABLE}
+\begin{lisp}
+;;;; Alchemy package, written and maintained by Merlin, Inc. \\ 
+ \\ 
+(cl:defpackage "ALCHEMY" \\ 
+~~(:export "LEAD-TO-GOLD" "GOLD-TO-LEAD" \\ 
+~~~~~~~~~~~"ANTIMONY-TO-ZINC" "ELIXIR-OF-LIFE") \\ 
+~~) \\ 
+ \\ 
+;;; This package needs a function from the PHLOGISTON package. \\ 
+;;; Load the definition of the PHLOGISTON package if necessary. \\ 
+ \\ 
+(cl:unless (cl:find-package "PHLOGISTON") \\ 
+~~(cl:load "phlogiston-package")) \\ 
+ \\ 
+;;; We don't frequently need most of the external symbols from \\ 
+;;; PHLOGISTON, so it's not worth doing a USE-PACKAGE on it. \\ 
+;;; We'll just use qualified names as needed.  But we use \\ 
+;;; one function, MAKE-FIRE-BOTTLE, a lot, so import it. \\ 
+;;; It's external in PHLOGISTON and so can be referred to \\ 
+;;; here using ":" qualified-name syntax. \\ 
+ \\ 
+(cl:import '(phlogiston:make-fire-bottle))
+\end{lisp}
+\vskip\ruletonoteskip
+\hrule
+\vskip\ruletonoteskip\null
+\caption{File \protect\cd{alchemy} Using \protect\cd{defpackage}}
+\label{DEFPACKAGE-ALCHEMY-FILE-TABLE}
+\begin{lisp}
+;;;; Alchemy functions, written and maintained by Merlin, Inc. \\ 
+ \\ 
+(unless (find-package "ALCHEMY") \\ 
+~~(load "alchemy-package")) \\ 
+ \\ 
+(in-package 'alchemy) \\ 
+ \\ 
+(defun lead-to-gold (x) \\ 
+~~"Takes a quantity of lead and returns gold." \\ 
+~~(when (> (phlogiston:heat-flow 5 x x)~~;Using a qualified symbol \\ 
+~~~~~~~~~~~3) \\ 
+~~~~(make-fire-bottle x))~~~~~~~~~~~~~~~~;Using an imported symbol \\ 
+~~(gild x)) \\ 
+ \\ 
+;;; And so on ...
+\end{lisp}
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 11260
+[t]
+\caption{File \protect\cd{phlogiston-package} Using \protect\cd{defpackage}}
+\label{DEFPACKAGE-PHLOGISTON-PACKAGE-TABLE}
+\begin{lisp}
+;;;; Phlogiston package definition, by Thermofluidics, Ltd. \\ 
+ \\ 
+;;; This package uses functions from the ALCHEMY package. \\ 
+ \\ 
+(cl:unless (cl:find-package "ALCHEMY") \\ 
+~~(cl:load "alchemy-package")) \\ 
+ \\ 
+(cl:defpackage "PHLOGISTON" \\ 
+~~(:use "COMMON-LISP" "ALCHEMY") \\ 
+~~(:export "HEAT-FLOW" \\ 
+~~~~~~~~~~~"COLD-FLOW" \\ 
+~~~~~~~~~~~"MIX-FLUIDS" \\ 
+~~~~~~~~~~~"SEPARATE-FLUIDS" \\ 
+~~~~~~~~~~~"BURN" \\ 
+~~~~~~~~~~~"MAKE-FIRE-BOTTLE") \\ 
+~~)
+\end{lisp}
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 11267
+[b]
+\caption{File \protect\cd{phlogiston} Using \protect\cd{defpackage}}
+\label{DEFPACKAGE-PHLOGISTON-FILE-TABLE}
+\begin{lisp}
+;;;; Phlogiston functions, by Thermofluidics, Ltd. \\ 
+ \\ 
+(unless (find-package "PHLOGISTON") \\ 
+~~(load "phlogiston-package")) \\ 
+ \\ 
+(in-package 'phlogiston) \\ 
+\\ 
+(defvar *feeling-weak* nil) \\ 
+\\ 
+(defun heat-flow (amount x y) \\ 
+~~"Make some amount of heat flow from x to y." \\ 
+~~(when *feeling-weak* \\ 
+~~~~(quaff (elixir-of-life)))~~~~~;No qualifier is needed. \\ 
+~~(push-heat amount x y)) \\ 
+ \\ 
+;;; And so on ...
+\end{lisp}
+\end{table}
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \( {\it x}=\mathop{\rm cis}\nolimits {2 \pi \over 3}= -{1 \over 2} + {\sqrt{3} \over 2}{\it i} \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \sqrt{{\it x}^3} = \sqrt{1} = 1 \)
+}
+
+{\newpage
+\clearpage
+\samepage \( {\it x}^{3 / 2} = {\it e}^{(3/2) \log {\hbox{\scriptsize\it x}}}
+   = {\it e}^{(3/2) (2\pi/3) \hbox{\scriptsize\it i}} = {\it e}^{\pi \hbox{\scriptsize\it i}} = -1 \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \sqrt{{\it x}^3} = \sqrt{-1} = {\it i} \)
+}
+
+{\newpage
+\clearpage
+\samepage \( {\it x}^{3/2} = {\it e}^{(3 / 2) \log {\hbox{\scriptsize\it x}}}
+   = {\it e}^{(3/2) \pi \hbox{\scriptsize\it \hbox{\scriptsize\it i}}} = -{\it i} \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \log \left| {\it z} \right| + {\it i} \mathop{\rm phase}\nolimits {\it z} \)
+}
+
+{\newpage
+\clearpage
+\samepage \( {\it e}^{(\log \hbox{\scriptsize\it z})/2} \)
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \( {\it e} ^ {\hbox{\scriptsize\it i} \cdot \hbox{\scriptsize\it radians}} \)
+}
+
+{\newpage
+\clearpage
+\samepage % latex2html id marker 40832
+\( {\it e} ^{ \hbox{\scriptsize\it i} \theta } = \cos \theta + {\it i} \sin \theta \)
+}
+
+{\newpage
+\clearpage
+\samepage \( -{\it i} \log \left({\it i}{\it z} + \sqrt{1-{\it z}^2}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( -{\it i} \log \left({\it z} + {\it i}\sqrt{1-{\it z}^2}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \(  \displaystyle { 2 \log \left( \sqrt{{1+{\it z} \over 2}} + {\it i} \sqrt{{1-{\it z} \over 2}} \right) \over i}\)
+}
+
+{\newpage
+\clearpage
+\samepage \( (\pi/2)-\arcsin {\it z} \)
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}llc@{}}
+\multicolumn{2}{c}{Condition}&Cartesian Locus&Range of Result \\ 
+\hlinesp
+\hbox to 0.4in{${\it y}=0$\hss}&\hbox to 0.4in{${\it x}>0$\hss}&\hbox to 1.6in{Positive {\it x}-axis\hss}&$0$ \\ 
+${\it y}>0$&${\it x}>0$&Quadrant I&$0 < {\rm result} < \pi/2$ \\ 
+${\it y}>0$&${\it x}=0$&Positive {\it y}-axis&$\pi/2$ \\ 
+${\it y}>0$&${\it x}<0$&Quadrant II&$\pi/2 < {\rm result} < \pi$ \\ 
+${\it y}=0$&${\it x}<0$&Negative {\it x}-axis&$\pi$ \\ 
+${\it y}<0$&${\it x}<0$&Quadrant III&$-\pi < {\rm result} < -\pi/2$ \\ 
+${\it y}<0$&${\it x}=0$&Negative {\it y}-axis&$-\pi/2$ \\ 
+${\it y}<0$&${\it x}>0$&Quadrant IV&$-\pi/2 < {\rm result} < 0$ \\ 
+${\it y}=0$&${\it x}=0$&Origin&error \\ 
+\hline
+\end{tabular*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}llc@{}}
+\multicolumn{2}{c}{Condition}&Cartesian Locus&Range of Result \\ 
+\hlinesp
+\hbox to 0.4in{${\it y}=+0$\hss}&\hbox to 0.4in{${\it x}>0$\hss}&\hbox to 1.6in{Just above positive {\it x}-axis\hss}&$+0$ \\ 
+${\it y}>0$&${\it x}>0$&Quadrant I&$+0 < {\rm result} < \pi/2$ \\ 
+${\it y}>0$&${\it x}=\pm 0$&Positive {\it y}-axis&$\pi/2$ \\ 
+${\it y}>0$&${\it x}<0$&Quadrant II&$\pi/2 < {\rm result} < \pi$ \\ 
+${\it y}=+0$&${\it x}<0$&Just below negative {\it x}-axis&$\pi$ \\ 
+${\it y}=-0$&${\it x}<0$&Just above negative {\it x}-axis&$\pi$ \\ 
+${\it y}<0$&${\it x}<0$&Quadrant III&$-\pi < {\rm result} < -\pi/2$ \\ 
+${\it y}<0$&${\it x}=\pm 0$&Negative {\it y}-axis&$-\pi/2$ \\ 
+${\it y}<0$&${\it x}>0$&Quadrant IV&$-\pi/2 < {\rm result} < -0$ \\ 
+${\it y}=-0$&${\it x}>0$&Just below positive {\it x}-axis&$-0$ \\ 
+${\it y}=+0$&${\it x}=+0$&Near origin&$+0$ \\ 
+${\it y}=-0$&${\it x}=+0$&Near origin&$-0$ \\ 
+${\it y}=+0$&${\it x}=-0$&Near origin&$\pi$ \\ 
+${\it y}=-0$&${\it x}=-0$&Near origin&$-\pi$ \\ 
+\hline
+\end{tabular*}
+}
+
+{\newpage
+\clearpage
+\samepage \( -{\it i}\log \left((1+{\it i}{\it y}) \sqrt{1/(1+{\it y}^2)}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \displaystyle { \log (1+{\it i}{\it y}) - \log (1-{\it i}{\it y}) \over 2{\it i} } \)
+}
+
+{\newpage
+\clearpage
+\samepage $-\pi/2$
+}
+
+{\newpage
+\clearpage
+\samepage $\pi/2$
+}
+
+{\newpage
+\clearpage
+\samepage \( ({\it e}^{\hbox{\scriptsize\it z}}-{\it e}^{-\hbox{\scriptsize\it z}})/2 \)
+}
+
+{\newpage
+\clearpage
+\samepage \( ({\it e}^{\hbox{\scriptsize\it z}}+{\it e}^{-\hbox{\scriptsize\it z}})/2 \)
+}
+
+{\newpage
+\clearpage
+\samepage \( ({\it e}^{\hbox{\scriptsize\it z}}-{\it e}^{-\hbox{\scriptsize\it z}})/({\it e}^{\hbox{\scriptsize\it z}}+{\it e}^{-\hbox{\scriptsize\it z}}) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \log \left({\it z}+\sqrt{1+{\it z}^2}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \log \left({\it z}+({\it z}+1)\sqrt{({\it z}-1)/({\it z}+1)}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \log \left((1+{\it z})\sqrt{1-1/{\it z}^2}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \log \left((1+{\it z})\sqrt{1/(1-{\it z}^2)}\right) \)
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage $(-\pi,\pi]$
+}
+
+{\newpage
+\clearpage
+\samepage $[-\pi,\pi]$
+}
+
+{\newpage
+\clearpage
+\samepage \( \sqrt{{\it z}} = {\it e}^{(\log \hbox{\scriptsize\it z})/2} \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \mathop{\rm phase}\nolimits {\it z} = \arctan (\Im {\it z}, \Re {\it z}) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \log {\it z} = \left(\log \left|{\it z}\right|\right)+{\it i} (\mathop{\rm phase}\nolimits {\it z}) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \log_{\hbox{\scriptsize\it b}} {\it z}=(\log {\it z})/(\log {\it b}) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( {\it b}^{\hbox{\scriptsize\it x}}={\it e}^{\hbox{\scriptsize\it x} \log \hbox{\scriptsize\it b} } \)
+}
+
+{\newpage
+\clearpage
+\samepage $0^0=1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it b}^{\hbox{\scriptsize\it x}}=0$
+}
+
+{\newpage
+\clearpage
+\samepage $0^{\hbox{\scriptsize\it x}}$
+}
+
+{\newpage
+\clearpage
+\samepage \( \arcsin {\it z}=-{\it i} \log \left({\it i}{\it z}+\sqrt{1-{\it z}^2}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \displaystyle \arcsin {\it z} = { \mathop{\rm arcsinh}\nolimits {\it i}{\it z} \over {\it i} }\)
+}
+
+{\newpage
+\clearpage
+\samepage \( \arccos {\it z}=-{\it i} \log \left({\it z}+{\it i} \sqrt{1-{\it z}^2}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \arccos {\it z}={\pi \over 2}-\arcsin {\it z} \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \arctan {\it z}=-{\it i} \log \left((1+{\it i} {\it z}) \sqrt{1/(1+{\it z}^2)}\right)\)
+}
+
+{\newpage
+\clearpage
+\samepage \( \displaystyle \arctan {\it z} = { \log (1+{\it i}{\it z}) - \log (1-{\it i}{\it z}) \over 2{\it i} }\)
+}
+
+{\newpage
+\clearpage
+\samepage \( \displaystyle \arctan {\it z} = { \mathop{\rm arctanh}\nolimits {\it i}{\it z} \over {\it i} }\)
+}
+
+{\newpage
+\clearpage
+\samepage \( \mathop{\rm arcsinh}\nolimits {\it z}=\log \left({\it z}+\sqrt{1+{\it z}^2}\right)\)
+}
+
+{\newpage
+\clearpage
+\samepage \( \mathop{\rm arccosh}\nolimits {\it z}=\log \left({\it z}+({\it z}+1)\sqrt{({\it z}-1)/({\it z}+1)}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \mathop{\rm arccosh}\nolimits {\it z}=2 \log \left(  \sqrt{({\it z}+1)/2} + \sqrt{({\it z}-1)/2} \right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \mathop{\rm arctanh}\nolimits {\it z}=\log \left((1+{\it z})\sqrt{1-1/{\it z}^2}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \mathop{\rm arctanh}\nolimits {\it z}=\log \left((1+{\it z})\sqrt{1/(1-{\it z}^2)}\right) \)
+}
+
+{\newpage
+\clearpage
+\samepage $-\pi {\it i}/2$
+}
+
+{\newpage
+\clearpage
+\samepage $\pi {\it i}/2$
+}
+
+{\newpage
+\clearpage
+\samepage \( \displaystyle \mathop{\rm arctanh}\nolimits {\it z}= { \left(\log(1+{\it z}) - \log(1-{\it z})\right) \over 2 } \)
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
+$\sin {\it i}{\it z} = {\it i} \sinh {\it z}$&$\sinh {\it i}{\it z} = {\it i} \sin {\it z}$&$\arctan {\it i}{\it z} = {\it i} \mathop{\rm arctanh}\nolimits {\it z}$ \\ 
+$\cos {\it i}{\it z} = \cosh {\it z}$&$\cosh {\it i}{\it z} = \cos {\it z}$&$\mathop{\rm arcsinh}\nolimits {\it i}{\it z} = {\it i} \arcsin {\it z}$ \\ 
+$\tan {\it i}{\it z} = {\it i} \tanh {\it z}$&$\arcsin {\it i}{\it z} = {\it i} \mathop{\rm arcsinh}\nolimits {\it z}$&$\mathop{\rm arctanh}\nolimits {\it i}{\it z} = {\it i} \arctan {\it z}$
+\end{tabular*}
+}
+
+{\newpage
+\clearpage
+\samepage $[1/4,1/2]$
+}
+
+{\newpage
+\clearpage
+\samepage $[3/4, 1]$
+}
+
+{\newpage
+\clearpage
+\samepage $[\pi /2, 2]$
+}
+
+{\newpage
+\clearpage
+\samepage $[3, \pi]$
+}
+
+{\newpage
+\clearpage
+\samepage $2^{\hbox{\scriptsize\it j}+1}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it f}({\it z})$
+}
+
+{\newpage
+\clearpage
+\samepage $[-4.1, 4.1]$
+}
+
+{\newpage
+\clearpage
+\samepage $\sqrt{1-{\it z}^2}$
+}
+
+{\newpage
+\clearpage
+\samepage $\sqrt{1+{\it z}^2}$
+}
+
+{\newpage
+\clearpage
+\samepage $({\it z}-1)/({\it z}+1)$
+}
+
+{\newpage
+\clearpage
+\samepage $(1+{\it z})/(1-{\it z})$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it f}({\it z})=({\it z}-1)/({\it z}+1)$
+}
+
+{\newpage
+\clearpage
+\samepage $\tanh {\it z} = {\it f}({\it e}^{2\hbox{\scriptsize\it z}})$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it g}({\it z})=\sqrt{1-{\it z}^2}$
+}
+
+{\newpage
+\clearpage
+\samepage $\cos {\it z} = {\it g}(\sin {\it z})$
+}
+
+{\newpage
+\clearpage
+\samepage \( \displaystyle {\it z}=\lim_{\hbox{\scriptsize\it x}\rightarrow +\infty} {\it f}({\it x}+0{\it i\/}) \)
+}
+
+{\newpage
+\clearpage
+\samepage \( \displaystyle {\it z} = \lim_{\hbox{\scriptsize\it y}\rightarrow -\infty} {\it f}(0+{\it y}{\it i\/}) \)
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12561
+\vbox to \foodimen{
+\caption{Initial Decoration of the Complex Plane (Identity Function)}
+\label{IDENTITY-PLOT}
+\vskip -2pt \vskip 28pc \PostScriptFile{identity-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+This figure was produced in exactly the same manner as succeeding figures,
+simply by plotting the function \cd{identity} instead of a numerical function.
+Thus the first of these figures was produced by the last function of the first edition.
+I knew it would come in handy someday!
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12567
+\vbox to \foodimen{
+
+\caption{Illustration of the Range of the Square Root Function}
+\label{SECOND-PLOT}
+\vskip -2pt \vskip 28pc \PostScriptFile{sqrt-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The \cd{sqrt} function maps the complex plane into the right half
+of the plane by slitting it along the negative real axis and then sweeping
+it around as if half-closing a folding fan.
+The fan also shrinks, as if it were made of cotton and had gotten
+wetter at the periphery than at the center.
+The positive real axis is mapped onto itself.  The negative real axis is mapped
+onto the positive imaginary axis (but if minus zero is supported, then
+$-{\it x}+0{\it i}$ is mapped onto the positive imaginary axis and $-{\it x}-0{\it i}$ onto
+the negative imaginary axis, assuming ${\it x}>0$).  The positive imaginary axis
+is mapped onto the northeast diagonal, and the negative imaginary axis
+onto the southeast diagonal.  More generally, lines are mapped to rectangular hyperbolas
+(or fragments thereof\,) centered on the origin;
+lines through the origin are mapped to degenerate
+hyperbolas (perpendicular lines through the origin).
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12578
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Exponential Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{exp-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The \cd{exp} function maps horizontal lines to radii and maps vertical
+lines to circles centered at the origin.
+The origin is mapped to 1.  (It is instructive to compare
+this graph with those of other functions
+that map the origin to 1, for example $(1+{\it z})/(1-{\it z})$, $\cos {\it z}$, and $\sqrt{1-{\it z}^2}$.)
+The entire real axis is mapped to the positive
+real axis, with $-\infty$ mapping to the origin and $+\infty$ to itself.
+The imaginary axis is mapped to the unit circle with infinite multiplicity (period $2\pi$);
+therefore the mapping of the imaginary infinities $\pm\infty {\it i}$ is indeterminate.
+It follows that the entire left half-plane is mapped to the interior of the unit circle,
+and the right half-plane is mapped to the exterior of the unit circle.
+A line at any angle other than horizontal or vertical is mapped to a
+logarithmic spiral (but this is not illustrated here).
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12588
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Natural Logarithm Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{log-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The \cd{log} function, which is the inverse of \cd{exp}, naturally maps radial lines to
+horizontal lines and circles centered at the origin to vertical lines.
+The interior of the unit circle is thus mapped to the entire left half-plane,
+and the exterior of the unit circle is mapped to the right half-plane.
+The positive real axis is mapped to the entire real axis, and the negative
+real axis to a horizontal line of height $\pi$.  The positive and negative
+imaginary axes are mapped to horizontal lines of height $\pm\pi/2$.
+The origin is mapped to $-\infty$.
+
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12594
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Function $({\it z}-1)/({\it z}+1)$}
+\vskip -2pt \vskip 28pc \PostScriptFile{minus-over-plus-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+A line is a degenerate circle with infinite radius;
+when I say ``circles'' here I also mean lines.
+Then $({\it z}-1)/({\it z}+1)$ maps circles into circles.
+All circles through $-1$ become lines; all lines become
+circles through $1$.
+The real axis is mapped onto itself: 1 to
+the origin, the origin to $-1$, $-1$ to infinity, and infinity to 1.
+The imaginary axis becomes the unit circle; {\it i} is mapped to itself,
+as is $-{\it i}$.  Thus the entire right half-plane is mapped to the interior
+of the unit circle, the unit circle interior to the left half-plane,
+the left half-plane to the unit circle exterior, and the unit circle exterior
+to the right half-plane.  Imagine the complex plane to be a vast sea.
+The Colossus of Rhodes straddles the origin, its left foot on {\it i} and its right foot on $-{\it i}$.
+It bends down and briefly paddles water between its legs so furiously that the water
+directly beneath is pushed out into the entire area behind it; much that was
+behind swirls forward to either side; and all that was before is
+sucked in to lie between its feet.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12605
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Function $(1+{\it z})/(1-{\it z})$}
+\vskip -2pt \vskip 28pc \PostScriptFile{plus-over-minus-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The function ${\it h}({\it z})=(1+{\it z})/(1-{\it z})$
+is the inverse of ${\it f}({\it z})=({\it z}-1)/({\it z}+1)$; that is,
+${\it h}({\it f}({\it z}))={\it f}({\it h}({\it z}))={\it z}$. At first glance,
+the graph of ${\it h}$ appears to be that of ${\it f}$
+flipped left-to-right, or perhaps reflected in the origin, but careful
+consideration of the shaded annuli reveals that this is not so; something more
+subtle is going on.  Note that
+${\it f}({\it f}({\it z}))={\it h}({\it h}({\it z}))={\it g}({\it z})=-1/{\it z}$.
+The functions ${\it f}$, ${\it g}$, ${\it h}$, and the identity function
+thus form a group under composition, isomorphic to the group
+of the cyclic permutations of the points $-1$, $0$, $1$, and $\infty$, as
+indeed these functions accomplish the four possible cyclic permutations
+on those points.  This function group is a subset of the group of bilinear
+transformations $({\it a}{\it z}+{\it b})/({\it c}{\it z}+{\it d})$,
+all of which are conformal (angle-preserving) and map circles
+onto circles.  Now, doesn't that tangle of circles through $-1$ look like something
+the cat got into?
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12645
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Sine Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{sin-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+We are used to seeing \cd{sin} looking like a wiggly ocean wave,
+graphed vertically as a function of the real axis only.  Here is a different view.
+The entire real axis is mapped to the segment $[-1, 1]$ of the real axis
+with infinite multiplicity (period $2\pi$).  The imaginary axis is mapped to itself
+as if by \cd{sinh} considered as a real function.  The origin is mapped to itself.
+Horizontal lines are mapped to ellipses with foci at $\pm1$ (note that two horizontal
+lines equidistant from the real axis will map onto the same ellipse).
+Vertical lines are mapped to hyperbolas with the same foci.  There is a curious accident:
+the ellipse for horizontal
+lines at distance $\pm1$ from the real axis appears to intercept the real axis at
+$\pm\pi/2\approx \pm1.57\ldots$ but this is not so; the intercepts are actually at
+$\pm({\it e}+1/{\it e})/2\approx \pm1.54\ldots\,\hbox{}$.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12654
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Arc Sine Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{asin-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+Just as \cd{sin} grabs horizontal lines and bends them into elliptical loops around
+the origin, so its inverse \cd{asin} takes annuli and yanks them more
+or less horizontally straight.  Because sine is not injective,
+its inverse as a function cannot be surjective.  This is just a highfalutin
+way of saying that the range of the \cd{asin} function doesn't
+cover the entire plane but only a strip $\pi$ wide; arc sine as a one-to-many relation
+would cover the plane with an infinite number of copies of this strip side by side,
+looking for all the world like the tail of a peacock with an infinite number of feathers.
+The imaginary axis is mapped to itself as if by \cd{asinh} considered as a real function.
+The real axis is mapped to a bent path, turning corners at $\pm\pi/2$ (the points to
+which $\pm 1$ are mapped); $+\infty$ is mapped to $\pi/2-\infty {\it i}$, and
+$-\infty$ to $-\pi/2+\infty {\it i}$.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12664
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Cosine Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{cos-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+We are used to seeing \cd{cos} looking exactly like \cd{sin}, a wiggly ocean wave,
+only displaced.  Indeed the complex mapping of \cd{cos} is also similar
+to that of \cd{sin}, with horizontal and vertical lines mapping to the same ellipses
+and hyperbolas with foci at $\pm 1$, although mapping to them in a different
+manner, to be sure.
+The entire real axis is again mapped to the segment $[-1, 1]$ of the real axis,
+but each half of the imaginary axis is mapped to the real axis to the right of 1
+(as if by \cd{cosh} considered as a real function).  Therefore $\pm\infty {\it i}$
+both map to $+\infty$.
+The origin is mapped to 1.  Whereas \cd{sin} is an odd function, \cd{cos} is an
+even function; as a result {\it two} points in each annulus, one the negative
+of the other, are mapped to the same shaded point in this graph; the shading shown here
+is taken from points in the original upper half-plane.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12677
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Arc Cosine Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{acos-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The graph of \cd{acos} is very much like that of \cd{asin}.
+One might think that our nervous peacock has shuffled half a step
+to the right, but the shading on the annuli shows that we have instead caught
+the bird exactly in mid-flight while doing a cartwheel.
+This is easily understood if we recall that $\arccos {\it z}=(\pi/2)-\arcsin {\it z}$;
+negating $\arcsin {\it z}$ rotates it upside down, and adding the result to $\pi/2$
+translates it $\pi/2$ to the right.
+The imaginary axis is mapped upside down to the vertical line at $\pi/2$.
+The point $+1$ is mapped to the origin, and $-1$ to $\pi$.
+The image of the real axis is again cranky; $+\infty$ is mapped to $+\infty {\it i}$,
+and $-\infty$ to $\pi-\infty {\it i}$.
+
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12688
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Tangent Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{tan-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The usual graph of \cd{tan} as a real function looks like an infinite chorus
+line of disco dancers, left hands pointed skyward and right hands to the floor.
+The \cd{tan} function is the quotient of \cd{sin} and \cd{cos}
+but it doesn't much look like either except for having period $2\pi$.
+This goes for the complex plane as well, although the swoopy loops produced
+from the annulus between $\pi/2$ and $2$ look vaguely like
+those from the graph of \cd{sin} inside out.
+The real axis is mapped onto itself with infinite multiplicity (period $2\pi$).
+The imaginary axis is mapped backwards onto $[-{\it i},{\it i}]$:
+$+\infty {\it i}$ is mapped to $-{\it i}$ and $-\infty {\it i}$ to $+{\it i}$.
+Horizontal lines below or above the real axis
+become circles surrounding $+{\it i}$ or $-{\it i}$, respectively.
+Vertical lines become circular arcs from $+{\it i}$ to $-{\it i}$;
+two vertical lines separated by $(2{\it k}+1)\pi$ for integer ${\it k}$
+together become a complete circle.  It seems that two arcs
+shown hit the real axis at $\pm\pi/2=\pm 1.57\ldots$ but that is a coincidence;
+they really hit the axis at $\pm\tan 1= 1.55\ldots\,\hbox{}$.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12710
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Arc Tangent Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{xatan-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+All I can say is that this peacock is a horse of another color.
+At first glance, the axes seem to map in the same way as for \cd{asin} and
+\cd{acos}, but look again: this time it's the imaginary axis doing weird things.
+All infinities map multiply to the points
+$(2{\it k}+1)\pi/2$; within the strip of principal values we may say that
+the real axis is mapped to the interval $[-\pi/2,+\pi/2]$ and therefore
+$-\infty$ is mapped to $-\pi/2$ and $+\infty$ to $+\pi/2$.
+The point $+{\it i}$ is mapped to $+\infty {\it i}$, and $-{\it i}$ to $-\infty {\it i}$, and
+so the imaginary axis is mapped into three pieces: the segment
+$[-\infty {\it i},-{\it i}]$ is mapped to $[\pi/2,\pi/2-\infty {\it i}]$; the segment
+$[-{\it i},{\it i}]$ is mapped to the imaginary axis $[-\infty {\it i},+\infty {\it i}]$; and the segment
+$[+{\it i},+\infty {\it i}]$ is mapped to $[-\pi/2+\infty {\it i},-\pi/2]$.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12731
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Hyperbolic Sine Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{sinh-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+It would seem that the graph of \cd{sinh} is merely that of \cd{sin}
+rotated 90 degrees.  If that were so, then we would have $\sinh {\it z} = {\it i} \sin {\it z}$.
+Careful inspection of the shading, however, reveals that this is not quite the case;
+in both graphs the lightest and darkest shades, which initially are adjacent to
+the positive real axis, remain adjacent to the positive real axis in both cases.
+To derive the graph of \cd{sinh} from \cd{sin} we must therefore first
+rotate the complex plane by $-90$ degrees, then apply \cd{sin}, then
+rotate the result by 90 degrees. In other words, $\sinh {\it z} = {\it i} \sin (-{\it i\/}){\it z}$;
+consistently replacing ${\it z}$ with ${\it i}{\it z}$ in this formula yields the familiar identity
+$\sinh {\it i}{\it z} = {\it i} \sin {\it z}$.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12754
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Hyperbolic Arc Sine Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{asinh-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The peacock sleeps.  Because $\mathop{\rm arcsinh}\nolimits {\it i}{\it z} = {\it i} \arcsin {\it z}$,
+the graph of \cd{asinh}
+is related to that of \cd{asin} by pre- and post-rotations of the complex plane
+in the same way as for \cd{sinh} and \cd{sin}.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12766
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Hyperbolic Cosine Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{cosh-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The graph of \cd{cosh} does {\it not} look like that of \cd{cos} rotated
+90 degrees; instead it looks like that of \cd{cos} unrotated.
+That is because $\cosh {\it i}{\it z}$ is not equal to ${\it i} \cos {\it z}$;
+rather, $\cosh {\it i}{\it z} = \cos {\it z}$.
+Interpreted, that means that the shading is pre-rotated but there is no
+post-rotation.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12781
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Hyperbolic Arc Cosine Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{acosh-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+Hmm---I'd rather not say what happened to this peacock.
+This feather looks a bit mangled.  Actually it is all right---the principal
+value for \cd{acosh} is so chosen that its graph does not look simply
+like a rotated version of the graph of \cd{acos}, but if all values were
+shown, the two graphs would fill the plane in repeating patterns related
+by a rotation.
+
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12787
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Hyperbolic Tangent Function}
+\vskip -2pt \vskip 28pc \PostScriptFile{tanh-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The diagram for \cd{tanh} is simply that of \cd{tan} turned on its ear:
+${\it i} \tan {\it z} = \tanh {\it i}{\it z}$.
+The imaginary axis is mapped onto itself with infinite multiplicity (period $2\pi$),
+and the real axis is mapped onto the segment $[-1,+1]$:
+$+\infty$ is mapped to $+1$, and $-\infty$ to $-1$.
+Vertical lines to the left or right of the real axis
+are mapped to circles surrounding $-1$ or $1$, respectively.
+Horizontal lines are mapped to circular arcs anchored at $-1$ and $+1$;
+two horizontal lines separated by a distance $(2{\it k}+1)\pi$ for integer ${\it k}$ are
+together mapped into a complete circle.  How do we know these really are circles?
+Well, $\tanh {\it z} = ((\exp 2{\it z})-1)/((\exp 2{\it z})+1)$, which is the composition of the
+bilinear transform $({\it z}-1)/({\it z}+1)$, the exponential $\exp {\it z}$,
+and the magnification $2{\it z}$.
+Magnification maps lines to lines of the same slope; the exponential maps
+horizontal lines to circles and vertical lines to radial lines;
+and a bilinear transform maps generalized circles (including lines) to
+generalized circles.  Q.E.D.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12806
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Hyperbolic Arc Tangent Function}
+\label{ATANH-PLOT}
+\vskip -2pt \vskip 28pc \PostScriptFile{really-good-atanh-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+A sleeping peacock of another color: $\mathop{\rm arctanh}\nolimits {\it i}{\it z} = {\it i} \arctan {\it z}$.
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12815
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Function $\protect\sqrt{1-{\it z}^2}$}
+\vskip -2pt \vskip 28pc \PostScriptFile{sqrt-one-minus-sq-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+Here is a curious graph indeed for so simple a function!
+The origin is mapped to 1.  The real axis segment $[0,1]$ is
+mapped backwards (and non-linearly) into itself; the segment $[1,+\infty]$
+is mapped non-linearly onto the positive imaginary axis.
+The negative real axis is mapped to the same points as the positive real axis.
+Both halves of the imaginary axis are mapped into $[1,+\infty]$ on the real axis.
+Horizontal lines become vaguely vertical, and
+vertical lines become vaguely horizontal.
+Circles centered at the origin are transformed into Cassinian \hbox{(half-)ovals}; the unit
+circle is mapped to a \hbox{(half-)lemniscate} of Bernoulli.  The outermost annulus appears
+to have its {\it inner} edge at $\pi$ on the real axis and its {\it outer}
+edge at 3 on the imaginary axis, but this is another accident; the intercept
+on the real axis, for example, is not really at $\pi\approx 3.14\ldots$ but
+at $\sqrt{1-(3{\it i\/})^2}=\sqrt{10}\approx 3.16\ldots\,\hbox{}$.
+
+}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 12826
+\vbox to \foodimen{
+\caption{Illustration of the Range of the Function $\protect\sqrt{1+{\it z}^2}$}
+\label{LAST-PLOT}
+\vskip -2pt \vskip 28pc \PostScriptFile{sqrt-one-plus-sq-plot.ps}\vskip 3pt
+\vss
+\small\noindent
+The graph of ${\it q}({\it z})=\sqrt{1+{\it z}^2}$ looks like that
+of ${\it p}({\it z})=\sqrt{1-{\it z}^2}$ except for
+the shading.  You might not expect ${\it p}$ and ${\it q}$ to be related in the same
+way that \cd{cos} and \cd{cosh} are, but after a little reflection (or perhaps
+I should say, after turning it around in one's mind) one can see that
+${\it q}({\it i}{\it z})={\it p}({\it z})$.  This formula is indeed of exactly the same form as
+$\cosh {\it i}{\it z} = \cos {\it z}$.  The function
+$\sqrt{1+{\it z}^2}$ maps both halves of the real axis into $[1,+\infty]$ on the real axis.
+The segments $[0,{\it i}]$ and $[0,-{\it i}]$ of the imaginary axis are each mapped
+backwards onto segment $[0,1]$ of the real axis; $[{\it i},+\infty {\it i}]$ and
+$[-{\it ,}-\infty {\it i}]$ are each mapped onto the positive imaginary axis
+(but if minus zero is supported then opposite sides of the
+imaginary axis map to opposite halves of the imaginary axis---for example,
+$q(+0+2{\it i\/})=\sqrt{5}{\it i}$ but $q(-0+2{\it i\/})=-\sqrt{5}{\it i}$).
+}
+\end{figure}
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage $\hbox{\it integer}+\hbox{\rm 0.5}$
+}
+
+{\newpage
+\clearpage
+\samepage $-1.0$
+}
+
+{\newpage
+\clearpage
+\samepage $1.0$
+}
+
+{\newpage
+\clearpage
+\samepage $90^\circ$
+}
+
+{\newpage
+\clearpage
+\samepage \( (4+0{\it i\/})(+0+{\it i\/}) = ((4)(+0) - (+0)(1)) + ((4)(1) + (+0)(+0)){\it i} \)
+}
+
+{\newpage
+\clearpage
+\samepage \( = ((+0)-(+0))+((4)+(+0)){\it i} = +0+4{\it i} \)
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage $2^{\hbox{\scriptsize\it j}}$
+}
+
+{\newpage
+\clearpage
+\samepage $2^{\hbox{\scriptsize\it index}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it floor}({\it integer}\cdot2^{\hbox{\scriptsize\it count}}$
+}
+
+{\newpage
+\clearpage
+\samepage \( {\it ceiling}(\log_2 ({\bf if}\; {\it integer} < 0 \;{\bf then} \;
+    -{\it integer} \;{\bf else}\; {\it integer}+1)) \)
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \( 2^{\hbox{\scriptsize\it position}+\hbox{\scriptsize\it size}-1} \)
+}
+
+{\newpage
+\clearpage
+\samepage \( 2^{\hbox{\scriptsize\it position}} \)
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage $[{\it A},{\it B})$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it X}\cdot({\it B}-{\it A})+{\it A}$
+}
+
+{\newpage
+\clearpage
+\samepage $[0.0, 1.0)$
+}
+
+{\newpage
+\clearpage
+\samepage $[0,{\it M})$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it X}={\it N}/{\it M}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it M}=2^{\hbox{\footnotesize\it f}}$
+}
+
+{\newpage
+\clearpage
+\samepage $[1.0, 2.0)$
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage $-2^{15}$
+}
+
+{\newpage
+\clearpage
+\samepage $2^{15}-1$
+}
+
+\stepcounter{chapter}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 14108
+\caption{Standard Character Labels, Glyphs, and Descriptions}
+\label{STANDARD-CHAR-REPERTOIRE-TABLE}
+\tabcolsep0pt
+
+\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}llllllll@{}}
+           &&&\cd{SM05}&\cd{{\Xatsign}}&{\rm commercial at}&\cd{SD13}&\cd{{\Xbq}}&{\rm grave accent} \\ 
+\cd{SP02}&\cd{!}&{\rm exclamation mark}&\cd{LA02}&\cd{A}&{\rm capital A}&\cd{LA01}&\cd{a}&{\rm small a} \\ 
+\cd{SP04}&\cd{"}&{\rm quotation mark}&\cd{LB02}&\cd{B}&{\rm capital B}&\cd{LB01}&\cd{b}&{\rm small b} \\ 
+\cd{SM01}&\cd{\#}&{\rm number sign}&\cd{LC02}&\cd{C}&{\rm capital C}&\cd{LC01}&\cd{c}&{\rm small c} \\ 
+\cd{SC03}&\cd{\$}&{\rm dollar sign}&\cd{LD02}&\cd{D}&{\rm capital D}&\cd{LD01}&\cd{d}&{\rm small d} \\ 
+\cd{SM02}&\cd{\%}&{\rm percent sign}&\cd{LE02}&\cd{E}&{\rm capital E}&\cd{LE01}&\cd{e}&{\rm small e} \\ 
+\cd{SM03}&\cd{\&}&{\rm ampersand}&\cd{LF02}&\cd{F}&{\rm capital F}&\cd{LF01}&\cd{f}&{\rm small f} \\ 
+\cd{SP05}&\cd{'}&{\rm apostrophe}&\cd{LG02}&\cd{G}&{\rm capital G}&\cd{LG01}&\cd{g}&{\rm small g} \\ 
+\cd{SP06}&\cd{(}&{\rm left parenthesis}&\cd{LH02}&\cd{H}&{\rm capital H}&\cd{LH01}&\cd{h}&{\rm small h} \\ 
+\cd{SP07}&\cd{)}&{\rm right parenthesis}&\cd{LI02}&\cd{I}&{\rm capital I}&\cd{LI01}&\cd{i}&{\rm small i} \\ 
+\cd{SM04}&\cd{*}&{\rm asterisk}&\cd{LJ02}&\cd{J}&{\rm capital J}&\cd{LJ01}&\cd{j}&{\rm small j} \\ 
+\cd{SA01}&\cd{+}&{\rm plus sign}&\cd{LK02}&\cd{K}&{\rm capital K}&\cd{LK01}&\cd{k}&{\rm small k} \\ 
+\cd{SP08}&\cd{,}&{\rm comma}&\cd{LL02}&\cd{L}&{\rm capital L}&\cd{LL01}&\cd{l}&{\rm small l} \\ 
+\cd{SP10}&\cd{-}&{\rm hyphen or minus sign}&\cd{LM02}&\cd{M}&{\rm capital M}&\cd{LM01}&\cd{m}&{\rm small m} \\ 
+\cd{SP11}&\cd{.}&{\rm period or full stop}&\cd{LN02}&\cd{N}&{\rm capital N}&\cd{LN01}&\cd{n}&{\rm small n} \\ 
+\cd{SP12}&\cd{/}&{\rm solidus}&\cd{LO02}&\cd{O}&{\rm capital O}&\cd{LO01}&\cd{o}&{\rm small o} \\ 
+\cd{ND10}&\cd{0}&{\rm digit 0}&\cd{LP02}&\cd{P}&{\rm capital P}&\cd{LP01}&\cd{p}&{\rm small p} \\ 
+\cd{ND01}&\cd{1}&{\rm digit 1}&\cd{LQ02}&\cd{Q}&{\rm capital Q}&\cd{LQ01}&\cd{q}&{\rm small q} \\ 
+\cd{ND02}&\cd{2}&{\rm digit 2}&\cd{LR02}&\cd{R}&{\rm capital R}&\cd{LR01}&\cd{r}&{\rm small r} \\ 
+\cd{ND03}&\cd{3}&{\rm digit 3}&\cd{LS02}&\cd{S}&{\rm capital S}&\cd{LS01}&\cd{s}&{\rm small s} \\ 
+\cd{ND04}&\cd{4}&{\rm digit 4}&\cd{LT02}&\cd{T}&{\rm capital T}&\cd{LT01}&\cd{t}&{\rm small t} \\ 
+\cd{ND05}&\cd{5}&{\rm digit 5}&\cd{LU02}&\cd{U}&{\rm capital U}&\cd{LU01}&\cd{u}&{\rm small u} \\ 
+\cd{ND06}&\cd{6}&{\rm digit 6}&\cd{LV02}&\cd{V}&{\rm capital V}&\cd{LV01}&\cd{v}&{\rm small v} \\ 
+\cd{ND07}&\cd{7}&{\rm digit 7}&\cd{LW02}&\cd{W}&{\rm capital W}&\cd{LW01}&\cd{w}&{\rm small w} \\ 
+\cd{ND08}&\cd{8}&{\rm digit 8}&\cd{LX02}&\cd{X}&{\rm capital X}&\cd{LX01}&\cd{x}&{\rm small x} \\ 
+\cd{ND09}&\cd{9}&{\rm digit 9}&\cd{LY02}&\cd{Y}&{\rm capital Y}&\cd{LY01}&\cd{y}&{\rm small y} \\ 
+\cd{SP13}&\cd{:}&{\rm colon}&\cd{LZ02}&\cd{Z}&{\rm capital Z}&\cd{LZ01}&\cd{z}&{\rm small z} \\ 
+\cd{SP14}&\cd{;}&{\rm semicolon}&\cd{SM06}&\cd{{\Xlbracket}}&{\rm left square bracket}&\cd{SM11}&\cd{{\Xlbrace}}&{\rm left curly bracket} \\ 
+\cd{SA03}&\cd{<}&{\rm less-than sign}&\cd{SM07}&\cd{{\Xbackslash}}&{\rm reverse solidus}&\cd{SM13}&\cd{|}&{\rm vertical bar} \\ 
+\cd{SA04}&\cd{=}&{\rm equals sign}&\cd{SM08}&\cd{{\Xrbracket}}&{\rm right square bracket}&\cd{SM14}&\cd{{\Xrbrace}}&{\rm right curly bracket} \\ 
+\cd{SA05}&\cd{>}&{\rm greater-than sign}&\cd{SD15}&\cd{{\Xcircumflex}}&{\rm circumflex accent}&\cd{SD19}&\cd{{\Xtilde}}&{\rm tilde} \\ 
+\cd{SP15}&\cd{?}&{\rm question mark}&\cd{SP09}&\cd{{\Xunderscore}}&{\rm low line}&
+\end{tabular*}
+\vfill
+\begin{small}
+\noindent
+The characters in this table plus the space and newline characters make up
+the standard Common Lisp character repertoire (type \cd{standard-char}).
+The character labels and character descriptions shown here are taken
+from ISO standard 6937/2 .  The first character of the label
+categorizes the character as Latin, Numeric, or Special.
+\end{small}
+\end{table}
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+elt&reverse&map&remove \\ 
+length&nreverse&some&remove-duplicates \\ 
+subseq&concatenate&every&delete \\ 
+copy-seq&position&notany&delete-duplicates \\ 
+fill&find&notevery&substitute \\ 
+replace&sort&reduce&nsubstitute \\ 
+count&merge&search&mismatch
+\end{tabular*}
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage ${\it a}_2$
+}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage ${\it i}_0$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it i}_1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it i}_{\hbox{\scriptsize\it n}-1}$
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}lllll@{}}
+~~~{\it argument1}~~&0&0&1&1 \\ 
+~~~{\it argument2}~~&0&1&0&1&{\it Operation name} \\ 
+\hlinesp
+bit-and&0&0&0&1&{\rm and} \\ 
+bit-ior&0&1&1&1&{\rm inclusive or} \\ 
+bit-xor&0&1&1&0&{\rm exclusive or} \\ 
+bit-eqv&1&0&0&1&{\rm equivalence (exclusive nor)} \\ 
+bit-nand&1&1&1&0&{\rm not-and} \\ 
+bit-nor&1&0&0&0&{\rm not-or} \\ 
+bit-andc1&0&1&0&0&{\rm and complement of {\it argument1} with {\it argument2}} \\ 
+bit-andc2&0&0&1&0&{\rm and {\it argument1} with complement of {\it argument2}} \\ 
+bit-orc1&1&1&0&1&{\rm or complement of {\it argument1} with {\it argument2}} \\ 
+bit-orc2&1&0&1&1&{\rm or {\it argument1} with complement of {\it argument2}} \\ 
+\hline
+\end{tabular*}
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
+string= & string-equal & string-trim \\ 
+string< & string-lessp &  string-left-trim \\ 
+string> & string-greaterp &  string-right-trim \\ 
+string<= & string-not-greaterp & string-upcase \\ 
+string>= & string-not-lessp & string-downcase \\ 
+string/= & string-not-equal & string-capitalize
+\end{tabular*}
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage ${}_{\hbox{\scriptsize\it j}}$
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
++++ \EV\ (cons 'a 'b)&*** \EV\ NIL    &/// \EV\ () \\ 
+++  \EV\ (hairy-loop)&**  \EV\ (A . B)&//  \EV\ ((A . B)) \\ 
++   \EV\ (floor 13 4)&*   \EV\ 3      &/   \EV\ (3 1)
+\end{tabular*}
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lll@{}}
+\cd{streamp} & \cd{pathname-host} & \cd{namestring} \\ 
+\cd{pathname} & \cd{pathname-device} & \cd{file-namestring} \\ 
+\cd{truename} & \cd{pathname-directory} & \cd{directory-namestring} \\ 
+\cd{merge-pathnames} & \cd{pathname-name} & \cd{host-namestring} \\ 
+\cd{open} & \cd{pathname-type} & \cd{enough-namestring} \\ 
+\cd{probe-file} & \cd{pathname-version} & \cd{directory} \\ 
+\end{tabular*}
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 19926
+\caption{Standard Character Syntax Types}
+\label{Standard-Character-Syntax-Table}
+\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
+$\langle$tab$\rangle$\cd{~~}{\it whitespace}&$\langle$page$\rangle$\cd{~~}{\it whitespace}&$\langle$newline$\rangle$\cd{~~}{\it whitespace} \\ 
+$\langle$space$\rangle$\cd{~~}{\it whitespace}&\cd{{\Xatsign}~~}{\it constituent}&\cd{{\Xbq}~~}{\it terminating macro} \\ 
+\cd{!~~}{\it constituent} *&\cd{A~~}{\it constituent}&\cd{a~~}{\it constituent} \\ 
+\cd{"~~}{\it terminating macro}&\cd{B~~}{\it constituent}&\cd{b~~}{\it constituent} \\ 
+\cd{\#~~}{\it non-terminating macro}&\cd{C~~}{\it constituent}&\cd{c~~}{\it constituent} \\ 
+\cd{\$~~}{\it constituent}&\cd{D~~}{\it constituent}&\cd{d~~}{\it constituent} \\ 
+\cd{\%~~}{\it constituent}&\cd{E~~}{\it constituent}&\cd{e~~}{\it constituent} \\ 
+\cd{\&~~}{\it constituent}&\cd{F~~}{\it constituent}&\cd{f~~}{\it constituent} \\ 
+\cd{'~~}{\it terminating macro}&\cd{G~~}{\it constituent}&\cd{g~~}{\it constituent} \\ 
+\cd{(~~}{\it terminating macro}&\cd{H~~}{\it constituent}&\cd{h~~}{\it constituent} \\ 
+\cd{)~~}{\it terminating macro}&\cd{I~~}{\it constituent}&\cd{i~~}{\it constituent} \\ 
+\cd{*~~}{\it constituent}&\cd{J~~}{\it constituent}&\cd{j~~}{\it constituent} \\ 
+\cd{+~~}{\it constituent}&\cd{K~~}{\it constituent}&\cd{k~~}{\it constituent} \\ 
+\cd{,~~}{\it terminating macro}&\cd{L~~}{\it constituent}&\cd{l~~}{\it constituent} \\ 
+\cd{-~~}{\it constituent}&\cd{M~~}{\it constituent}&\cd{m~~}{\it constituent} \\ 
+\cd{.~~}{\it constituent}&\cd{N~~}{\it constituent}&\cd{n~~}{\it constituent} \\ 
+\cd{/~~}{\it constituent}&\cd{O~~}{\it constituent}&\cd{o~~}{\it constituent} \\ 
+\cd{0~~}{\it constituent}&\cd{P~~}{\it constituent}&\cd{p~~}{\it constituent} \\ 
+\cd{1~~}{\it constituent}&\cd{Q~~}{\it constituent}&\cd{q~~}{\it constituent} \\ 
+\cd{2~~}{\it constituent}&\cd{R~~}{\it constituent}&\cd{r~~}{\it constituent} \\ 
+\cd{3~~}{\it constituent}&\cd{S~~}{\it constituent}&\cd{s~~}{\it constituent} \\ 
+\cd{4~~}{\it constituent}&\cd{T~~}{\it constituent}&\cd{t~~}{\it constituent} \\ 
+\cd{5~~}{\it constituent}&\cd{U~~}{\it constituent}&\cd{u~~}{\it constituent} \\ 
+\cd{6~~}{\it constituent}&\cd{V~~}{\it constituent}&\cd{v~~}{\it constituent} \\ 
+\cd{7~~}{\it constituent}&\cd{W~~}{\it constituent}&\cd{w~~}{\it constituent} \\ 
+\cd{8~~}{\it constituent}&\cd{X~~}{\it constituent}&\cd{x~~}{\it constituent} \\ 
+\cd{9~~}{\it constituent}&\cd{Y~~}{\it constituent}&\cd{y~~}{\it constituent} \\ 
+\cd{:~~}{\it constituent}&\cd{Z~~}{\it constituent}&\cd{z~~}{\it constituent} \\ 
+\cd{;~~}{\it terminating macro}&\cd{{\Xlbracket}~~}{\it constituent} *&\cd{{\Xlbrace}~~}{\it constituent} * \\ 
+\cd{<~~}{\it constituent}&\cd{{\Xbackslash}~~}{\it single escape}&\cd{|~~}{\it multiple escape} \\ 
+\cd{=~~}{\it constituent}&\cd{{\Xrbracket}~~}{\it constituent} *&\cd{{\Xrbrace}~~}{\it constituent} * \\ 
+\cd{>~~}{\it constituent}&\cd{{\Xcircumflex}~~}{\it constituent}&\cd{{\Xtilde}~~}{\it constituent} \\ 
+\cd{?~~}{\it constituent} *&\cd{{\Xunderscore}~~}{\it constituent}&$\langle$rubout$\rangle$\cd{~~}{\it constituent} \\ 
+$\langle$backspace$\rangle$\cd{~~}{\it constituent}&$\langle$return$\rangle$\cd{~~}{\it whitespace}&$\langle$linefeed$\rangle$\cd{~~}{\it whitespace}
+\end{tabular*}
+\vfill
+\begin{small}
+\noindent
+The characters marked with an asterisk are initially constituents
+but are reserved to the user for use as macro characters or for
+any other desired purpose.
+\end{small}
+\end{table}
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 20349
+[t]
+\caption{Actual Syntax of Numbers}
+\label{NUMBER-SYNTAX-TABLE}
+\tabbingsep=0pt
+\normalsize
+\begin{tabbing}
+{\it number} ::= {\it integer} {\Mor} {\it ratio} {\Mor} {\it floating-point-number} \\ 
+{\it integer} ::= \Mopt{{\it sign}} \Mplus{{\it digit}} \Mopt{{\it decimal-point}} \\ 
+{\it ratio} ::= \Mopt{{\it sign}} \Mplus{{\it digit}} \cd{/} \Mplus{{\it digit}} \\ 
+{\it floating-point-number} ::=\= \Mopt{{\it sign}} \Mstar{{\it digit}} {\it decimal-point} \Mplus{{\it digit}} \Mopt{{\it exponent}} \\ 
+\>{\Mor} \'\Mopt{{\it sign}} \Mplus{{\it digit}} \Mopt{{\it decimal-point}
+\Mstar{{\it digit}}} {\it exponent} \\  {\it sign} ::= \cd{+} {\Mor} \cd{-} \\ 
+{\it decimal-point} ::= \cd{.} \\ 
+{\it digit} ::= \cd{0} {\Mor} \cd{1} {\Mor} \cd{2} {\Mor} \cd{3} {\Mor} \cd{4}
+         {\Mor} \cd{5} {\Mor} \cd{6} {\Mor} \cd{7} {\Mor} \cd{8} {\Mor} \cd{9} \\ 
+{\it exponent} ::= {\it exponent-marker} \Mopt{{\it sign}} \Mplus{{\it digit}} \\ 
+{\it exponent-marker} ::= \cd{e} {\Mor} \cd{s} {\Mor} \cd{f} {\Mor} \cd{d} {\Mor} \cd{l}
+                   {\Mor} \cd{E} {\Mor} \cd{S} {\Mor} \cd{F} {\Mor} \cd{D} {\Mor} \cd{L}
+\end{tabbing}
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 20442
+\caption{Standard Constituent Character Attributes}
+\label{Standard-Readtable-Attributes-Table}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l@{\extracolsep{\fill}}lllll@{}}
+\cd{!}&{\it alphabetic}&$\langle$page$\rangle$&{\it illegal}&$\langle$backspace$\rangle$&{\it illegal} \\ 
+\cd{"}&{\it alphabetic} *&$\langle$return$\rangle$&{\it illegal} *&$\langle$tab$\rangle$&{\it illegal} * \\ 
+\cd{\#}&{\it alphabetic} *&$\langle$space$\rangle$&{\it illegal} *&$\langle$newline$\rangle$&{\it illegal} * \\ 
+\cd{\$}&{\it alphabetic}&$\langle$rubout$\rangle$&{\it illegal}&$\langle$linefeed$\rangle$&{\it illegal} * \\ 
+\cd{\%}&{\it alphabetic}&\cd{.}&\multicolumn{3}{l}{{\it alphabetic}, {\it dot}, {\it decimal point}}\\ 
+\cd{\&}&{\it alphabetic}&\cd{+}&\multicolumn{3}{l}{{\it alphabetic}, {\it plus sign}} \\ 
+\cd{'}&{\it alphabetic} *&\cd{-}&\multicolumn{3}{l}{{\it alphabetic}, {\it minus sign}} \\ 
+\cd{(}&{\it alphabetic} *&\cd{*}&{\it alphabetic} \\ 
+\cd{)}&{\it alphabetic} *&\cd{/}&\multicolumn{3}{l}{{\it alphabetic}, {\it ratio marker}} \\ 
+\cd{,}&{\it alphabetic} *&\cd{{\Xatsign}}&{\it alphabetic} \\ 
+\cd{0}&{\it alphadigit}&\cd{A}, \cd{a}&{\it alphadigit} \\ 
+\cd{1}&{\it alphadigit}&\cd{B}, \cd{b}&{\it alphadigit} \\ 
+\cd{2}&{\it alphadigit}&\cd{C}, \cd{c}&{\it alphadigit} \\ 
+\cd{3}&{\it alphadigit}&\cd{D}, \cd{d}&\multicolumn{3}{l}{{\it alphadigit}, {\it double-float exponent marker}} \\ 
+\cd{4}&{\it alphadigit}&\cd{E}, \cd{e}&\multicolumn{3}{l}{{\it alphadigit}, {\it float exponent marker}} \\ 
+\cd{5}&{\it alphadigit}&\cd{F}, \cd{f}&\multicolumn{3}{l}{{\it alphadigit}, {\it single-float exponent marker}} \\ 
+\cd{6}&{\it alphadigit}&\cd{G}, \cd{g}&{\it alphadigit} \\ 
+\cd{7}&{\it alphadigit}&\cd{H}, \cd{h}&{\it alphadigit} \\ 
+\cd{8}&{\it alphadigit}&\cd{I}, \cd{i}&{\it alphadigit} \\ 
+\cd{9}&{\it alphadigit}&\cd{J}, \cd{j}&{\it alphadigit} \\ 
+\cd{:}&{\it package marker}~~~~~~&\cd{K}, \cd{k}&{\it alphadigit} \\ 
+\cd{;}&{\it alphabetic} *&\cd{L}, \cd{l}&\multicolumn{3}{l}{{\it alphadigit}, {\it long-float exponent marker}} \\ 
+\cd{<}&{\it alphabetic}&\cd{M}, \cd{m}&{\it alphadigit} \\ 
+\cd{=}&{\it alphabetic}&\cd{N}, \cd{n}&{\it alphadigit} \\ 
+\cd{>}&{\it alphabetic}&\cd{O}, \cd{o}&{\it alphadigit} \\ 
+\cd{?}&{\it alphabetic}&\cd{P}, \cd{p}&{\it alphadigit} \\ 
+\cd{{\Xlbracket}}&{\it alphabetic}&\cd{Q}, \cd{q}&{\it alphadigit} \\ 
+\cd{{\Xbackslash}}&{\it alphabetic} *&\cd{R}, \cd{r}&{\it alphadigit} \\ 
+\cd{{\Xrbracket}}&{\it alphabetic}&\cd{S}, \cd{s}&\multicolumn{3}{l}{{\it alphadigit}, {\it short-float exponent marker}} \\ 
+\cd{{\Xcircumflex}}&{\it alphabetic}&\cd{T}, \cd{t}&{\it alphadigit} \\ 
+\cd{{\Xunderscore}}&{\it alphabetic}&\cd{U}, \cd{u}&{\it alphadigit} \\ 
+\cd{{\Xbq}}&{\it alphabetic} *&\cd{V}, \cd{v}&{\it alphadigit} \\ 
+\cd{{\Xlbrace}}&{\it alphabetic}&\cd{W}, \cd{w}&{\it alphadigit} \\ 
+\cd{|}&{\it alphabetic} *&\cd{X}, \cd{x}&{\it alphadigit} \\ 
+\cd{{\Xrbrace}}&{\it alphabetic}&\cd{Y}, \cd{y}&{\it alphadigit} \\ 
+\cd{{\Xtilde}}&{\it alphabetic}&\cd{Z}, \cd{z}&{\it alphadigit} \\ 
+\end{tabular*}
+\vfill
+\begin{footnotesize}
+\noindent
+These interpretations apply only to characters whose
+syntactic type is {\it constituent}.  Entries marked
+with an asterisk are normally shadowed because the characters
+are of syntactic type
+{\it whitespace}, {\it macro}, {\it single escape}, or {\it multiple escape}.
+An {\it alphadigit} character is interpreted as a
+digit if it is a valid digit in the radix specified by {\small \cd{*read-base*}};
+otherwise it is alphabetic.
+Characters with an {\it illegal} attribute can never appear in
+a token except under the control of an escape character.
+\end{footnotesize}
+\end{table}
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 21146
+\caption{Standard \# Macro Character Syntax}
+\label{Standard-Sharp-Macro-Definitions-Table}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l@{\extracolsep{\fill}}lll@{}}
+\cd{\#!}&{\it undefined} *&\cd{\#}$\langle$backspace$\rangle$&{\it signals error} \\ 
+\cd{\#"}&{\it undefined}&\cd{\#}$\langle$tab$\rangle$&{\it signals error} \\ 
+\cd{\#\#}&{\it reference to \cd{\#=} label}&\cd{\#}$\langle$newline$\rangle$&{\it signals error} \\ 
+\cd{\#\$}&{\it undefined}&\cd{\#}$\langle$linefeed$\rangle$&{\it signals error} \\ 
+\cd{\#\%}&{\it undefined}&\cd{\#}$\langle$page$\rangle$&{\it signals error} \\ 
+\cd{\#\&}&{\it undefined}&\cd{\#}$\langle$return$\rangle$&{\it signals error} \\ 
+\cd{\#'}&{\it \cd{function} abbreviation}&\cd{\#}$\langle$space$\rangle$&{\it signals error} \\ 
+\cd{\#(}&{\it simple vector}&\cd{\#+}&{\it read-time conditional} \\ 
+\cd{\#)}&{\it signals error}&\cd{\#-}&{\it read-time conditional} \\ 
+\cd{\#*}&{\it bit-vector}&\cd{\#.}&{\it read-time evaluation} \\ 
+\cd{\#,}&{\it load-time evaluation}&\cd{\#/}&{\it undefined} \\ 
+\cd{\#0}&{\it used for infix arguments}~~~~~~&\cd{\#A}, \cd{\#a}&{\it array} \\ 
+\cd{\#1}&{\it used for infix arguments}&\cd{\#B}, \cd{\#b}&{\it binary rational} \\ 
+\cd{\#2}&{\it used for infix arguments}&\cd{\#C}, \cd{\#c}&{\it complex number} \\ 
+\cd{\#3}&{\it used for infix arguments}&\cd{\#D}, \cd{\#d}&{\it undefined} \\ 
+\cd{\#4}&{\it used for infix arguments}&\cd{\#E}, \cd{\#e}&{\it undefined} \\ 
+\cd{\#5}&{\it used for infix arguments}&\cd{\#F}, \cd{\#f}&{\it undefined} \\ 
+\cd{\#6}&{\it used for infix arguments}&\cd{\#G}, \cd{\#g}&{\it undefined} \\ 
+\cd{\#7}&{\it used for infix arguments}&\cd{\#H}, \cd{\#h}&{\it undefined} \\ 
+\cd{\#8}&{\it used for infix arguments}&\cd{\#I}, \cd{\#i}&{\it undefined} \\ 
+\cd{\#9}&{\it used for infix arguments}&\cd{\#J}, \cd{\#j}&{\it undefined} \\ 
+\cd{\#:}&{\it uninterned symbol}&\cd{\#K}, \cd{\#k}&{\it undefined} \\ 
+\cd{\#;}&{\it undefined}&\cd{\#L}, \cd{\#l}&{\it undefined} \\ 
+\cd{\#<}&{\it signals error}&\cd{\#M}, \cd{\#m}&{\it undefined} \\ 
+\cd{\#=}&{\it label following object}&\cd{\#N}, \cd{\#n}&{\it undefined} \\ 
+\cd{\#>}&{\it undefined}&\cd{\#O}, \cd{\#o}&{\it octal rational} \\ 
+\cd{\#?}&{\it undefined} *&\cd{\#P}, \cd{\#p}&{\it pathname} \\ 
+\cd{\#{\Xatsign}}&{\it undefined}&\cd{\#Q}, \cd{\#q}&{\it undefined} \\ 
+\cd{\#{\Xlbracket}}&{\it undefined} *&\cd{\#R}, \cd{\#r}&{\it radix-n rational} \\ 
+\cd{\#{\Xbackslash}}&{\it character object}&\cd{\#S}, \cd{\#s}&{\it structure} \\ 
+\cd{\#{\Xrbracket}}&{\it undefined} *&\cd{\#T}, \cd{\#t}&{\it undefined} \\ 
+\cd{\#{\Xcircumflex}}&{\it undefined}&\cd{\#U}, \cd{\#u}&{\it undefined} \\ 
+\cd{\#{\Xunderscore}}&{\it undefined}&\cd{\#V}, \cd{\#v}&{\it undefined} \\ 
+\cd{\#{\Xbq}}&{\it undefined}&\cd{\#W}, \cd{\#w}&{\it undefined} \\ 
+\cd{\#{\Xlbrace}}&{\it undefined} *&\cd{\#X}, \cd{\#x}&{\it hexadecimal rational} \\ 
+\cd{\#|}&{\it balanced comment}&\cd{\#Y}, \cd{\#y}&{\it undefined} \\ 
+\cd{\#{\Xrbrace}}&{\it undefined} *&\cd{\#Z}, \cd{\#z}&{\it undefined} \\ 
+\cd{\#{\Xtilde}}&{\it undefined}&\cd{\#}$\langle$rubout$\rangle$&{\it undefined}
+\end{tabular*}
+\vfill
+\begin{small}
+\noindent
+The combinations marked by an asterisk are explicitly reserved to the user
+and will never be defined by Common Lisp.
+
+\begin{new}
+X3J13 voted in June 1989 \issue{PATHNAME-PRINT-READ} to
+specify \cd{\#P} and \cd{\#p} ({\it undefined}
+in the first edition).
+\end{new}
+\end{small}
+\end{table}
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \Xarrowright
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 21931
+\begin{new}
+\caption{Macro Character Definition for Xapping Syntax}
+\label{XAPPING-MACRO-CHAR-TABLE}
+\begin{lisp}
+(defun open-brace-macro-char (s macro-char) \\ 
+~~(declare (ignore macro-char)) \\ 
+~~(do ((ch (peek-char t s t nil t) (peek-char t s t nil t)) \\ 
+~~~~~~~(domain '())~~(range '())~~(exceptions '())) \\ 
+~~~~~~((char= ch \#{\Xbackslash}{\Xrbrace}) \\ 
+~~~~~~~(read-char s t nil t) \\ 
+~~~~~~~(construct-xapping (reverse domain) (reverse range))) \\ 
+~~~~(cond ((char= ch \#{\Xbackslash}{\Xarrowright}) \\ 
+~~~~~~~~~~~(read-char s t nil t) \\ 
+~~~~~~~~~~~(let ((nextch (peek-char nil s t nil t))) \\ 
+~~~~~~~~~~~~~(cond ((char= nextch \#{\Xbackslash}{\Xrbrace}) \\ 
+~~~~~~~~~~~~~~~~~~~~(read-char s t nil t) \\ 
+~~~~~~~~~~~~~~~~~~~~(return (xap (reverse domain) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(reverse range) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~nil :universal exceptions))) \\ 
+~~~~~~~~~~~~~~~~~~~(t (let ((item (read s t nil t))) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~(cond ((char= (peek-char t s t nil t) \#{\Xbackslash}{\Xrbrace}) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(read-char s t nil t) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(return (xap (reverse domain) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(reverse range) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~item :constant \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~exceptions))) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(t (reader-error s \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"Default~{\Xarrowright} item must be last")))))))) \\ 
+~~~~~~~~~~(t (let ((item (read-preserving-whitespace s t nil t)) \\ 
+~~~~~~~~~~~~~~~~~~~(nextch (peek-char nil s t nil t))) \\ 
+~~~~~~~~~~~~~~~(cond ((char= nextch \#{\Xbackslash}{\Xarrowright}) \\ 
+~~~~~~~~~~~~~~~~~~~~~~(read-char s t nil t) \\ 
+~~~~~~~~~~~~~~~~~~~~~~(cond ((member (peek-char nil s t nil t) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'(\#{\Xbackslash}Space \#{\Xbackslash}Tab \#{\Xbackslash}Newline)) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(push item exceptions)) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~(t (push item domain) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(push (read s t nil t) range)))) \\ 
+~~~~~~~~~~~~~~~~~~~~~((char= nch \#{\Xbackslash}{\Xrbrace}) \\ 
+~~~~~~~~~~~~~~~~~~~~~~(read-char s t nil t) \\ 
+~~~~~~~~~~~~~~~~~~~~~~(push item domain) \\ 
+~~~~~~~~~~~~~~~~~~~~~~(push item range) \\ 
+~~~~~~~~~~~~~~~~~~~~~~(return (xap (reverse domain) (reverse range)))) \\ 
+~~~~~~~~~~~~~~~~~~~~~(t (push item domain) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~(push item range))))))))
+\end{lisp}
+\end{new}
+\end{table}
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage $10^{-3}$
+}
+
+{\newpage
+\clearpage
+\samepage $10^7$
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 22672
+[t]
+\caption{Examples of Print Level and Print Length Abbreviation}
+\label{LEVEL-LENGTH-TABLE}
+\begin{lisp}
+\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}@{}ll@{}}
+{\it v}&{\it n}&Output \\ 
+\hlinesp
+0&1&\# \\ 
+1&1&(if ...) \\ 
+1&2&(if \# ...) \\ 
+1&3&(if \# \# ...) \\ 
+1&4&(if \# \# \#) \\ 
+2&1&(if ...) \\ 
+2&2&(if (member x ...) ...) \\ 
+2&3&(if (member x y) (+ \# 3) ...) \\ 
+3&2&(if (member x ...) ...) \\ 
+3&3&(if (member x y) (+ (car x) 3) ...) \\ 
+3&4&(if (member x y) (+ (car x) 3) '(foo . \#(a b c d ...))) \\ 
+3&5&(if (member x y) (+ (car x) 3) '(foo . \#(a b c d "Baz")))
+\end{tabular*}
+\end{lisp}
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 22738
+[t]
+\caption{Standard Bindings for I/O Control Variables}
+\label{WITH-STANDARD-IO-SYNTAX-TABLE}
+\begin{flushleft}
+\cf
+\begin{tabular}{@{}ll@{}}
+{\rm Variable}&{\rm Value} \\ 
+\hlinesp
+      {*package*}                      &     {\rm the \cd{common-lisp-user} package} \\ 
+      {*print-array*}                  &     t \\ 
+      {*print-base*}                   &     10 \\ 
+      {*print-case*}                   &     :upcase \\ 
+      {*print-circle*}                 &     nil \\ 
+      {*print-escape*}                 &     t \\ 
+      {*print-gensym*}                 &     t \\ 
+      {*print-length*}                 &     nil \\ 
+      {*print-level*}                  &     nil \\ 
+      {*print-lines*}                  &     nil {\rm *} \\ 
+      {*print-miser-width*}            &     nil {\rm *} \\ 
+      {*print-pprint-dispatch*}        &     nil {\rm *} \\ 
+      {*print-pretty*}                 &     nil \\ 
+      {*print-radix*}                  &     nil \\ 
+      {*print-readably*}               &     t \\ 
+      {*print-right-margin*}           &     nil {\rm *} \\ 
+      {*read-base*}                    &     10 \\ 
+      {*read-default-float-format*}    &     single-float \\ 
+      {*read-eval*}                    &     t \\ 
+      {*read-suppress*}                &     nil \\ 
+      {*readtable*}                    &     {\rm the standard readtable}
+\end{tabular}
+\end{flushleft}
+* X3J13 voted in June 1989 \issue{PRETTY-PRINT-INTERFACE}
+to introduce the printer control variables
+\cd{*print-\discretionary{}{}{}right-\discretionary{}{}{}margin*},
+\cd{*print-\discretionary{}{}{}miser-\discretionary{}{}{}width*},
+\cd{*print-\discretionary{}{}{}lines*},
+and \cd{*print-\discretionary{}{}{}pprint-\discretionary{}{}{}dispatch*}
+(see section~\ref{PPRINT-VARIABLES-SECTION})
+but did not specify the values to which \cd{with-standard-io-syntax}
+should bind them.  I recommend that all four should be bound to \cd{nil}.
+\end{table}
+}
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage $10^60$
+}
+
+{\newpage
+\clearpage
+\samepage $2^{200}$
+}
+
+{\newpage
+\clearpage
+\samepage $10^{3(\hbox{\scriptsize\it k}+1)}$
+}
+
+{\newpage
+\clearpage
+\samepage $10^{12}$
+}
+
+{\newpage
+\clearpage
+\samepage $10^{6\hbox{\scriptsize\it k}}$
+}
+
+{\newpage
+\clearpage
+\samepage $10^{18}$
+}
+
+{\newpage
+\clearpage
+\samepage $10^{\hbox{\scriptsize\it k}}$
+}
+
+{\newpage
+\clearpage
+\samepage \(10^{\hbox{\scriptsize\it n}-1}\leq\hbox{\it arg}<10^{\hbox{\scriptsize\it n}}\)
+}
+
+{\newpage
+\clearpage
+\samepage \Xarrowdown
+}
+
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 25237
+[t]
+\caption{Print Function for the Xapping Data Type}
+\label{XAPPING-FORMAT-TABLE}
+\begingroup
+\small
+\begin{lisp}
+(defun print-xapping (xapping stream depth) \\ 
+~~(declare (ignore depth)) \\ 
+~~(format stream \\ 
+~~~~~~~~~~;; Are you ready for this one? \\ 
+~~~~~~~~~~"{\Xtilde}:[{\Xlbrace}{\Xtilde};[{\Xtilde}]{\Xtilde}:{\Xlbrace}{\Xtilde}S{\Xtilde}:[{\Xarrowright}{\Xtilde}S{\Xtilde};{\Xtilde}*{\Xtilde}]{\Xtilde}:{\Xcircumflex} {\Xtilde}{\Xrbrace}{\Xtilde}:[{\Xtilde}; {\Xtilde}]{\Xtilde} \\ 
+~~~~~~~~~~~{\Xtilde}{\Xlbrace}{\Xtilde}S{\Xarrowright}{\Xtilde}{\Xcircumflex} {\Xtilde}{\Xrbrace}{\Xtilde}:[{\Xtilde}; {\Xtilde}]{\Xtilde}[{\Xtilde}*{\Xtilde};{\Xarrowright}{\Xtilde}S{\Xtilde};{\Xarrowright}{\Xtilde}*{\Xtilde}]{\Xtilde}:[{\Xrbrace}{\Xtilde};]{\Xtilde}]" \\ 
+~~~~~~~~~~;; Is that clear? \\ 
+~~~~~~~~~~(xectorp xapping) \\ 
+~~~~~~~~~~(do ((vp (xectorp xapping)) \\ 
+~~~~~~~~~~~~~~~(sp (finite-part-is-xetp xapping)) \\ 
+~~~~~~~~~~~~~~~(d (xapping-domain xapping) (cdr d)) \\ 
+~~~~~~~~~~~~~~~(r (xapping-range xapping) (cdr r)) \\ 
+~~~~~~~~~~~~~~~(z '() (cons (list (if vp (car r) (car d)) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(or vp sp) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(car r)) \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~z))) \\ 
+~~~~~~~~~~~~~~((null d) (reverse z))) \\ 
+~~~~~~~~~~(and (xapping-domain xapping) \\ 
+~~~~~~~~~~~~~~~(or (xapping-exceptions xapping) \\ 
+~~~~~~~~~~~~~~~~~~~(xapping-infinite xapping))) \\ 
+~~~~~~~~~~(xapping-exceptions xapping) \\ 
+~~~~~~~~~~(and (xapping-exceptions xapping) \\ 
+~~~~~~~~~~~~~~~(xapping-infinite xapping)) \\ 
+~~~~~~~~~~(ecase (xapping-infinite xapping) \\ 
+~~~~~~~~~~~~((nil) 0) \\ 
+~~~~~~~~~~~~(:constant 1) \\ 
+~~~~~~~~~~~~(:universal 2)) \\ 
+~~~~~~~~~~(xapping-default xapping) \\ 
+~~~~~~~~~~(xectorp xapping)))
+\end{lisp}
+\endgroup
+See section~\ref{READTABLE-SECTION} for the \cd{defstruct} definition of the \cd{xapping} data
+type, whose accessor functions are used in this code.
+\end{table}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}p{17pc}@{}}
+\cd{{\Xtilde}:[{\Xlbrace}{\Xtilde};[{\Xtilde}]}&
+Print ``\cd{[}'' for a xector, and ``\cd{{\Xlbrace}}'' otherwise. \\ 
+\cd{{\Xtilde}:{\Xlbrace}{\Xtilde}S{\Xtilde}:[{\Xarrowright}{\Xtilde}S{\Xtilde};{\Xtilde}*{\Xtilde}]{\Xtilde}:{\Xcircumflex} {\Xtilde}{\Xrbrace}}& 
+Given a list of lists, print the pairs.  Each sublist has three elements:
+the index (or the value if we're printing a xector); a flag that is true for
+either a xector or xet (in which case no arrow is printed);
+and the value.  Note the use of \cd{{\Xtilde}:{\Xlbrace}} to iterate, and the use
+of \cd{{\Xtilde}:{\Xcircumflex}} to avoid printing a separating space after the
+final pair (or at all, if there are no pairs). \\ 
+\cd{{\Xtilde}:[{\Xtilde}; {\Xtilde}]}&
+If there were pairs and there are exceptions or an infinite part, print a separating space. \\ 
+\cd{{\Xtilde}$\langle${\rm newline}$\rangle$}&
+Do nothing.  This merely allows the format control string to be broken across two lines. \\ 
+\cd{{\Xtilde}{\Xlbrace}{\Xtilde}S{\Xarrowright}{\Xtilde}{\Xcircumflex} {\Xtilde}{\Xrbrace}}&
+Given a list of exception indices, print them.
+Note the use of \cd{{\Xtilde}{\Xlbrace}} to iterate, and the use
+of \cd{{\Xtilde}{\Xcircumflex}} to avoid printing a separating space after the
+final exception (or at all, if there are no exceptions). \\ 
+\cd{{\Xtilde}:[{\Xtilde}; {\Xtilde}]}&
+If there were exceptions and there is an infinite part, print a separating space. \\ 
+\cd{{\Xtilde}[{\Xtilde}*{\Xtilde};{\Xarrowright}{\Xtilde}S{\Xtilde};{\Xarrowright}{\Xtilde}*{\Xtilde}]}&
+Use \cd{{\Xtilde}[} to choose one of three cases for printing the infinite part. \\ 
+\cd{{\Xtilde}:[{\Xrbrace}{\Xtilde};]{\Xtilde}]}&
+Print ``\cd{]}'' for a xector, and ``\cd{{\Xrbrace}}'' otherwise.
+\end{tabular*}
+}
+
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll@{}}
+  \cd{compile-file} & \cd{file-write-date} & \cd{pathname-name} \\ 
+  \cd{compile-file-pathname} & \cd{host-namestring} & \cd{pathname-type} \\ 
+  \cd{delete-file} & \cd{load} & \cd{pathname-version} \\ 
+  \cd{directory} & \cd{namestring} & \cd{probe-file} \\ 
+  \cd{directory-namestring} & \cd{open} & \cd{rename-file} \\ 
+  \cd{dribble} & \cd{pathname} & \cd{translate-pathname} \\ 
+  \cd{ed} & \cd{pathname-device} & \cd{truename} \\ 
+  \cd{enough-namestring} & \cd{pathname-directory} & \cd{wild-pathname-p} \\ 
+  \cd{file-author} & \cd{pathname-host} & \cd{with-open-file} \\ 
+  \cd{file-namestring} & \cd{pathname-match-p} &
+  \end{tabular*}
+}
+
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}ll@{}}
+  \cd{compile-file} & \cd{ed} & \cd{probe-file} \\ 
+  \cd{compile-file-pathname} & \cd{file-author} & \cd{rename-file} \\ 
+  \cd{delete-file} & \cd{file-write-date} & \cd{truename} \\ 
+  \cd{directory} & \cd{load} & \cd{with-open-file} \\ 
+  \cd{dribble} & \cd{open} & 
+  \end{tabular*}
+}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lll@{}}
+\cd{pathname} & \cd{pathname-device} & \cd{namestring} \\ 
+\cd{truename} & \cd{pathname-directory} & \cd{file-namestring} \\ 
+\cd{parse-namestring} & \cd{pathname-name} & \cd{directory-namestring} \\ 
+\cd{merge-pathnames} & \cd{pathname-type} & \cd{host-namestring} \\ 
+\cd{pathname-host} & \cd{pathname-version} & \cd{enough-namestring}
+\end{tabular*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lll@{}}
+\cd{open} & \cd{rename-file~~~~~~~} & \cd{file-write-date~~~~~} \\ 
+\cd{with-open-file~} & \cd{delete-file} & \cd{file-author} \\ 
+\cd{load} & \cd{probe-file} & \cd{directory} \\ 
+\cd{compile-file}
+\end{tabular*}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll@{}}
+\cd{make-two-way-stream} & \cd{make-string-input-stream} \\ 
+\cd{make-echo-stream} & \cd{make-string-output-stream} \\ 
+\cd{make-broadcast-stream} & \cd{with-input-from-string} \\ 
+\cd{make-concatenated-stream} & \cd{with-output-to-string}
+\end{tabular*}
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage ${\it b}^2-4{\it a}{\it c}$
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it S}'$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it A}'$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it B}'$
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 30569
+[t]
+\caption{Example of Logical Blocks, Conditional Newlines, and Sections}
+\label{PRETTY-PRINT-SECTIONS-FIGURE}
+\begin{lisp}
+~~~~~~~~~~~~~~~~~<-1---<--<--2---3->--4-->-> \\ [4pt]
+~~~~~~~~~~~~~~~~~000000000000000000000000000 \\ 
+~~~~~~~~~~~~~~~~~11~111111111111111111111111 \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~22~222            \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~333~3333       \\ 
+~~~~~~~~~~~~~~~~~~~~~~~~44444444444444~44444
+\end{lisp}
+\end{figure}
+}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it S}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it S}_ 2$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it S}_ 1\neq {\it S}_ 2$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_{1}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_{2}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_{\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_{2},\ldots,C_{\hbox{\scriptsize\it n}-1}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_{\hbox{\scriptsize\it i}+1}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_{\hbox{\scriptsize\it i}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_{1} \neq
+C_{2}$
+}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage ${\it T}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it T}_ {\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it T}_ 1, \ldots, T_ {\hbox{\scriptsize\it n}}$
+}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 31776
+[t]
+\caption{Class Precedence Lists for Predefined Types}
+\label{CLOS-PRECEDENCE-TABLE}
+\begin{flushleft}
+\cf
+\begin{tabular}{@{}ll@{}}
+{\rm Predefined Common Lisp Type}&{\rm Class Precedence List for Corresponding Class} \\ 
+\hlinesp
+array&(array t)\\ 
+bit-vector&(bit-vector vector array sequence t)\\ 
+character&(character t)\\ 
+complex&(complex number t)\\ 
+cons&(cons list sequence t)\\ 
+float&(float number t)\\ 
+function {\rm *}&(function t) \\ 
+hash-table {\rm *}&(hash-table t) \\ 
+integer&(integer rational number t)\\ 
+list&(list sequence t)\\ 
+null&(null symbol list sequence t)\\ 
+number&(number t)\\ 
+package {\rm *}&(package t) \\ 
+pathname {\rm *}&(pathname t) \\ 
+random-state {\rm *}&(random-state t) \\ 
+ratio&(ratio rational number t)\\ 
+rational&(rational number t)\\ 
+readtable {\rm *}&(readtable t) \\ 
+sequence&(sequence t)\\ 
+stream {\rm *}&(stream t) \\ 
+string&(string vector array sequence t)\\ 
+symbol&(symbol t)\\ 
+t&(t)\\ 
+vector&(vector array sequence t)
+\end{tabular}
+\end{flushleft}
+[An asterisk indicates a type added to this table as a consequence
+of a portion of the CLOS specification that was conditional on X3J13 voting
+to make that type disjoint from certain other built-in types
+\issue{DATA-TYPES-HIERARCHY-UNDERSPECIFIED}.---GLS]
+\end{table}
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{displaymath}{\it R}_ {\it C}=\{({\it C},{\it C}_ 1),({\it C}_ 1,{\it C}_ 2),\ldots,({\it C}_ {\hbox{\scriptsize\it n}-1},{\it C}_ {\hbox{\scriptsize\it n}})\}\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_ 1,\ldots,{\it C}_ {\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it S}_ {\it C}$
+}
+
+{\newpage
+\clearpage
+\samepage \begin{displaymath}{\it R}=\bigcup_{\textstyle {\it c}\in {{\it S}_ {\hbox{\scriptsize\it C}}}} {\it R}_ {\hbox{\scriptsize\it c}}\end{displaymath}
+}
+
+{\newpage
+\clearpage
+\samepage ${\it R}_ {\hbox{\scriptsize\it c}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it c}\in {\it S}_ {\hbox{\scriptsize\it C}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it S}_ {\hbox{\scriptsize\it C}}$
+}
+
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage $({\it C},{\it D})$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it D}\in {\it S}_ {\hbox{\scriptsize\it C}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_ 1,\ldots,C_ {\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage $\{{\it N}_ 1,\ldots,{\it N}_ {\hbox{\scriptsize\it m}}\}$
+}
+
+{\newpage
+\clearpage
+\samepage $({\it C}_
+1\ldots {\it C}_ {\hbox{\scriptsize\it n}})$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_
+{\it n}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it N}_ {\hbox{\scriptsize\it i}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_ {\hbox{\scriptsize\it j}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it T}_ 2$
+}
+
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage ${\it S}=\{\cd{pie},\discretionary{}{}{}
+\cd{apple},\discretionary{}{}{}
+\cd{cinnamon},\discretionary{}{}{}
+\cd{fruit},\discretionary{}{}{}
+\cd{spice},\discretionary{}{}{}
+\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t}\}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it R}=\{(\cd{pie},\discretionary{}{}{}
+\cd{apple}),\discretionary{}{}{}
+(\cd{apple},\discretionary{}{}{}
+\cd{cinnamon}),\discretionary{}{}{}
+(\cd{cinnamon},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{apple},\discretionary{}{}{}
+\cd{fruit}),\discretionary{}{}{}
+(\cd{fruit},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{cinnamon},\discretionary{}{}{}
+\cd{spice}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{fruit},\discretionary{}{}{}
+\cd{food}),\discretionary{}{}{}
+(\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{food}),\discretionary{}{}{}
+(\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t})\}$
+}
+
+{\newpage
+\clearpage
+\samepage $(\cd{cinnamon},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object})$
+}
+
+{\newpage
+\clearpage
+\samepage $(\cd{fruit},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object})$
+}
+
+{\newpage
+\clearpage
+\samepage $(\cd{spice},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object})$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it S}=\{\cd{apple},\discretionary{}{}{}
+\cd{cinnamon},\discretionary{}{}{}
+\cd{fruit},\discretionary{}{}{}
+\cd{spice},\discretionary{}{}{}
+\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t}\}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it R}=\{
+(\cd{apple},\discretionary{}{}{}
+\cd{cinnamon}),\discretionary{}{}{}
+(\cd{cinnamon},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{apple},\discretionary{}{}{}
+\cd{fruit}),\discretionary{}{}{}
+(\cd{fruit},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{cinnamon},\discretionary{}{}{}
+\cd{spice}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{fruit},\discretionary{}{}{}
+\cd{food}),\discretionary{}{}{}
+(\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{food}),\discretionary{}{}{}
+(\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t})\}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it S}=\{\cd{cinnamon},\discretionary{}{}{}
+\cd{fruit},\discretionary{}{}{}
+\cd{spice},\discretionary{}{}{}
+\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t}\}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it R}=\{(\cd{cinnamon},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{fruit},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{cinnamon},\discretionary{}{}{}
+\cd{spice}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{fruit},\discretionary{}{}{}
+\cd{food}),\discretionary{}{}{}
+(\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{food}),\discretionary{}{}{}
+(\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t})\}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it S}=\{\cd{cinnamon},\discretionary{}{}{}
+\cd{spice},\discretionary{}{}{}
+\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t}\}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it R}=\{(\cd{cinnamon},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{cinnamon},\discretionary{}{}{}
+\cd{spice}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{food}),\discretionary{}{}{}
+(\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t})\}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it S}=\{\cd{spice},\discretionary{}{}{}
+\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t}\}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it R}=\{(\cd{spice},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{food},\discretionary{}{}{}
+\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object}),\discretionary{}{}{}
+(\cd{spice},\discretionary{}{}{}
+\cd{food}),\discretionary{}{}{}
+(\cd{standard{\copy\Qhyphbox}\discretionary{}{}{}object},\discretionary{}{}{}
+\cd{t})\}$
+}
+
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage $\langle {\it A}_ 1, \ldots, {\it A}_ {\hbox{\scriptsize\it n}}\rangle$
+}
+
+{\newpage
+\clearpage
+\samepage $\langle {\it P}_ 1,
+\ldots, {\it P}_ {\hbox{\scriptsize\it n}}\rangle$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it A}_ {\hbox{\scriptsize\it i}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it P}_ {\hbox{\scriptsize\it i}}$
+}
+
+{\newpage
+\clearpage
+\samepage $C={\it P}_ {\hbox{\scriptsize\it i}}$
+}
+
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage ${\it P}_{1,1}\ldots P_{1,\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it P}_{2,1}\ldots P_{2,\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it P}_{1,\hbox{\scriptsize\it i}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it P}_{2,\hbox{\scriptsize\it i}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it P}_{1,\hbox{\scriptsize\it i}}=\hbox{{\tt(\cd{eql} $\hbox{{\it object}}_ 1$)}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it P}_{2,\hbox{\scriptsize\it i}}=\hbox{{\tt(\cd{eql} $\hbox{{\it object}}_ 2$)}}$
+}
+
+{\newpage
+\clearpage
+\samepage $\hbox{{\it object}}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage $\hbox{{\it object}}_ 2$
+}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage ${\it M}_ 1,\ldots,{\it M}_ {\hbox{\scriptsize\it k}}$
+}
+
+{\newpage
+\clearpage
+\samepage $\langle {\it M}_ 1\;{\it a}_ 1\ldots {\it a}_ {\hbox{\scriptsize\it n}}\rangle$
+}
+
+{\newpage
+\clearpage
+\samepage $\langle {\it M}_ k\;{\it a}_ 1\ldots {\it a}_ {\hbox{\scriptsize\it n}}\rangle$
+}
+
+{\newpage
+\clearpage
+\samepage $\langle {\it M}_ {\hbox{\scriptsize\it i}} \;{\it a}_ 1\ldots {\it a}_
+{\hbox{\scriptsize\it n}}\rangle$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it M}_ i$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it a}_ 1\ldots {\it a}_ {\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage $\langle {\it M}_{\hbox{\scriptsize\it i}} \ {\it a}_ 1\ldots {\it a}_ {\hbox{\scriptsize\it n}}\rangle$
+}
+
+{\newpage
+\clearpage
+\samepage $\langle {\it M}_ {\hbox{\scriptsize\it j}} \ {\it a}_ 1\ldots {\it a}_ {\hbox{\scriptsize\it n}}\rangle$
+}
+
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
+&{\rm Defaulted Initialization}&{\rm Contents} \\ 
+{\rm Form}&{\rm Argument List}&{\rm of Slot} \\ 
+\hlinesp
+\cd{(make-instance 'r)}&\cd{(a 1 b 2)}&\cd{1}\\ 
+\cd{(make-instance 'r 'a 3)}&\cd{(a 3 b 2)}&\cd{3}\\ 
+\cd{(make-instance 'r 'b 4)}&\cd{(b 4 a 1)}&\cd{4}\\ 
+\cd{(make-instance 'r 'a 1 'a 2)}&\cd{(a 1 a 2 b 2)}&\cd{1} \\ 
+\hline
+\end{tabular*}
+}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it C}_ {\hbox{{\footnotesize\rm from}}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_ {\hbox{{\footnotesize\rm to}}}$
+}
+
+\stepcounter{subsubsection}
+{\newpage
+\clearpage
+\samepage ${\it C}_
+{\hbox{{\footnotesize\it to}}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it C}_
+{\hbox{{\footnotesize\it from}}}$
+}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage $\lbrack\!\lbrack\downarrow\!\hbox{{\it slot-option}}\,\rbrack\!\rbrack$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it slot{\copy\hyphbox}entry}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it slot{\copy\hyphbox}entry}_ {\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it declaration}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it declaration}_ {\hbox{\scriptsize\it m}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it form}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it form}_ {\hbox{\scriptsize\it k}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it variable{\copy\hyphbox}name}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it accessor{\copy\hyphbox}name}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it variable{\copy\hyphbox}name}_ {\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it accessor{\copy\hyphbox}name}_ {\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it Q}_ 1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it Q}_ {\hbox{\scriptsize\it n}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\hbox{{\it Q}}}_ {\hbox{\scriptsize\it j}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it slot{\copy\hyphbox}entry}_ {\hbox{\scriptsize\it j}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\hbox{{\it slot-entry}}}_ {\hbox{\scriptsize\it j}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it variable{\copy\hyphbox}name}_ {\hbox{\scriptsize\it j}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it slot{\copy\hyphbox}name}_ {\hbox{\scriptsize\it j}}$
+}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \({}_{\hbox{\scriptsize\it n}}\)
+}
+
+{\newpage
+\clearpage
+\samepage \({}_{\hbox{\scriptsize\it m}}\)
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it C}'$
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{table}% latex2html id marker 37644
+[t]
+\caption{Condition Type Hierarchy}
+\label{CONDITION-HIERARCHY-TABLE}
+\begin{lisp}
+condition \\ 
+~~~~simple-condition \\ 
+~~~~serious-condition \\ 
+~~~~~~~~error \\ 
+~~~~~~~~~~~~simple-error \\ 
+~~~~~~~~~~~~arithmetic-error \\ 
+~~~~~~~~~~~~~~~~division-by-zero \\ 
+~~~~~~~~~~~~~~~~floating-point-overflow \\ 
+~~~~~~~~~~~~~~~~floating-point-underflow \\ 
+~~~~~~~~~~~~~~~~... \\ 
+~~~~~~~~~~~~cell-error \\ 
+~~~~~~~~~~~~~~~~unbound-variable \\ 
+~~~~~~~~~~~~~~~~undefined-function \\ 
+~~~~~~~~~~~~~~~~... \\ 
+~~~~~~~~~~~~control-error \\ 
+~~~~~~~~~~~~file-error \\ 
+~~~~~~~~~~~~package-error \\ 
+~~~~~~~~~~~~program-error \\ 
+~~~~~~~~~~~~stream-error \\ 
+~~~~~~~~~~~~~~~~end-of-file \\ 
+~~~~~~~~~~~~~~~~... \\ 
+~~~~~~~~~~~~type-error \\ 
+~~~~~~~~~~~~~~~~simple-type-error \\ 
+~~~~~~~~~~~~~~~~... \\ 
+~~~~~~~~~~~~... \\ 
+~~~~~~~~storage-condition \\ 
+~~~~~~~~... \\ 
+~~~~warning \\ 
+~~~~~~~~simple-warning \\ 
+~~~~~~~~... \\ 
+~~~~...
+\end{lisp}
+\vfill
+\end{table}
+}
+
+\appendix
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \({}_{\hbox{\scriptsize\it j}}\)
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it t}_1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it t}x_m$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it t}_{\hbox{\scriptsize\it i}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it t}_1, \ldots\,, {\it t}_{\hbox{\scriptsize\it m}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it t}_{\hbox{\scriptsize\it m}}$
+}
+
+{\newpage
+\clearpage
+\samepage \({}_{0}\)
+}
+
+{\newpage
+\clearpage
+\samepage \({}_{(\hbox{\scriptsize\it j}-1)}\)
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it s}_{\hbox{\scriptsize\it i}}$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it s}_1$
+}
+
+{\newpage
+\clearpage
+\samepage ${\it s}_{\hbox{\scriptsize\it n}}$
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage ${\it k}'$
+}
+
+{\newpage
+\clearpage
+\samepage \({\it k}'\)
+}
+
+{\newpage
+\clearpage
+\samepage ${it k}''$
+}
+
+{\newpage
+\clearpage
+\samepage \({}_{\hbox{\scriptsize\it k}''}\)
+}
+
+{\newpage
+\clearpage
+\samepage \({\it k}''\)
+}
+
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage $\lfloor1+({\it l}-{\it m})/{\it n}\rfloor$
+}
+
+{\newpage
+\clearpage
+\samepage $({\it i}*{\it n}+{\it k})$
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage
+\clearpage
+\samepage \begin{figure}% latex2html id marker 39202
+[t]
+\caption{A Constraint Cycle in a Series Expression}\label{SERIES-F1-FIGURE}
+\vskip 5pc
+\PostScriptFile{series-plot.ps}\relax
+\hbox{\relax
+
+\vbox to 0pt{\vskip -3.5pc\vskip 3pt\hbox to 0pt{\hskip 2.5pc\hskip -3pt\vbox to 0pt{\vss
+\hbox to 0pt{\hss \tt scan\hss}\vss}\hss}\vss}\relax
+\vbox to 0pt{\vskip -2.5pc\vskip 3pt\hbox to 0pt{\hskip 8.5pc\hskip -3pt\vbox to 0pt{\vss
+\hbox to 0pt{\hss \tt sum\hss}\vss}\hss}\vss}\relax
+\vbox to 0pt{\vskip -2.5pc\vskip 3pt\hbox to 0pt{\hskip 14pc\hskip -3pt\vbox to 0pt{\vss
+\hbox to 0pt{\hss \tt series\hss}\vss}\hss}\vss}\relax
+\vbox to 0pt{\vskip -3.5pc\vskip 3pt\hbox to 0pt{\hskip 19.5pc\hskip -3pt\vbox to 0pt{\vss
+\hbox to 0pt{\hss \tt \#M/\hss}\vss}\hss}\vss}\relax
+\vbox to 0pt{\vskip -3.5pc\vskip 3pt\hbox to 0pt{\hskip 25pc\hskip -3pt\vbox to 0pt{\vss
+\hbox to 0pt{\hss \tt max\hss}\vss}\hss}\vss}}
+\end{figure}
+}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage $t_1$
+}
+
+{\newpage
+\clearpage
+\samepage $t_2$
+}
+
+\stepcounter{section}
+\stepcounter{chapter}
+{\newpage
+\clearpage
+\samepage $^3$
+}
+
+\stepcounter{chapter}
+
+\end{document}
